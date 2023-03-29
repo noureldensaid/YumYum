@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "136942119389",
+    "firebase_url": "https://yumyum-bb307-default-rtdb.firebaseio.com",
+    "project_id": "yumyum-bb307",
+    "storage_bucket": "yumyum-bb307.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:136942119389:android:27b2965f3fe59cc40d2e34",
+        "android_client_info": {
+          "package_name": "com.fyp.yumyum"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "136942119389-0c9bnno8u94vu6j26oecjdpfln1h6a92.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.fyp.yumyum",
+            "certificate_hash": "27ba32a2261027f36bb87240fcd311cea84ed6c1"
+          }
+        },
+        {
+          "client_id": "136942119389-uvp124ulqhfi9lv8qhd0tra5kb7s99m7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBG071FQZEJ41fq_5MB3XrejzLxtxvwh7k"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "136942119389-uvp124ulqhfi9lv8qhd0tra5kb7s99m7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

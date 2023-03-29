@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/login_nav_graph.xml"
+    app:startDestination="@id/lottiLoadingFragment">
+
+    <fragment
+        android:id="@+id/welcomeFragment"
+        android:name="com.fyp.yumyum.ui.login.WelcomeFragment"
+        android:label="fragment_welcome"
+        tools:layout="@layout/fragment_welcome">
+        <action
+            android:id="@+id/action_welcomeFragment_to_registerFragment"
+            app:destination="@id/registerFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/registerFragment"
+        android:name="com.fyp.yumyum.ui.login.RegisterFragment"
+        android:label="fragment_register"
+        tools:layout="@layout/fragment_register" />
+    <fragment
+        android:id="@+id/lottiLoadingFragment"
+        android:name="com.fyp.yumyum.ui.login.LottiLoadingFragment"
+        android:label="fragment_lotti_loading"
+        tools:layout="@layout/fragment_lotti_loading">
+        <action
+            android:id="@+id/action_lottiLoadingFragment_to_welcomeFragment"
+            app:destination="@id/welcomeFragment" />
+    </fragment>
+</navigation>
