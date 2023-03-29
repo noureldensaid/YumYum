@@ -51,6 +51,10 @@ class SearchFragment : Fragment(R.layout.fragment_search) {
 
     }
 
+    //todo
+    // enhance ui and search
+    // finish profile and meal details fragment
+
     override fun onDestroy() {
         super.onDestroy()
         _binding = null
