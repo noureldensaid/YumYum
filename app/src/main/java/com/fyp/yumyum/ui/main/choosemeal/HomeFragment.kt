@@ -21,15 +21,12 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
     private val viewModel by viewModels<MainViewModel>()
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
-    private val imagesList = arrayListOf<SlideModel>()
     private lateinit var homeAdapter: HomeAdapter
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         _binding = FragmentHomeBinding.bind(view)
-        setUpImageSlider(imagesList)
-        binding.imageSlider.setImageList(imagesList, ScaleTypes.CENTER_CROP)
-
+        setUpImageSlider()
         homeAdapter = HomeAdapter()
         binding.homeRv.apply {
             setHasFixedSize(true)
@@ -53,10 +50,13 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
     }
 
 
-    private fun setUpImageSlider(imagesList: ArrayList<SlideModel>) {
-        imagesList.add(SlideModel("https://www.thespruceeats.com/thmb/PGh87G5Z6xe_wNfLYQsm7AuHo2U=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/unicorn-doughnuts-4773240-hero-01-9e468efed0f64d8a8fdc103f31cc4d8a.jpg"))
-        imagesList.add(SlideModel("https://www.mashed.com/img/gallery/the-real-reason-your-grilled-steak-is-gray/l-intro-1618967456.jpg"))
-        imagesList.add(SlideModel("https://i2.wp.com/www.downshiftology.com/wp-content/uploads/2022/09/Tuscan-Chicken-19.jpg"))
+    private fun setUpImageSlider() {
+        val imageUrls:List<SlideModel> = listOf(
+            SlideModel("https://images.unsplash.com/photo-1504674900247-0877df9cc836?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"),
+            SlideModel("https://images.unsplash.com/photo-1648913370516-4e3bf8f9aee8?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1091&q=80"),
+            SlideModel("https://images.unsplash.com/photo-1648912500384-94b96959c8b6?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1074&q=80")
+        )
+        binding.imageSlider.setImageList(imageUrls, ScaleTypes.CENTER_CROP)
     }
 
     override fun onDestroy() {

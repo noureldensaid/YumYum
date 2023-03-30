@@ -5,10 +5,10 @@ import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.fyp.yumyum.R
-import com.fyp.yumyum.adapters.HomeAdapter
 import com.fyp.yumyum.adapters.MealAdapter
 import com.fyp.yumyum.databinding.FragmentMealsBinding
 import com.fyp.yumyum.ui.main.MainViewModel
@@ -25,22 +25,32 @@ class MealsFragment : Fragment(R.layout.fragment_meals) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        _binding = FragmentMealsBinding.bind(view)
-        val categoryName = args.categoryName
 
-        viewModel.getMeals(categoryName)
-        viewModel.mealData.observe(viewLifecycleOwner, Observer {
-            mealAdapter.differ.submitList(it)
-        })
+
         mealAdapter = MealAdapter(viewModel)
+
+        _binding = FragmentMealsBinding.bind(view)
+
         binding.mealsRv.apply {
             setHasFixedSize(true)
             layoutManager = StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
             adapter = mealAdapter
         }
 
+        val categoryName = args.categoryName
 
 
+        viewModel.getMeals(categoryName)
+
+        viewModel.mealData.observe(viewLifecycleOwner, Observer {
+            mealAdapter.differ.submitList(it)
+        })
+
+        mealAdapter.onItemClickListener = {
+            val args = Bundle()
+            args.putString("mealId", it.idMeal)
+            findNavController().navigate(R.id.action_mealsFragment_to_mealDetailsFragment, args)
+        }
 
     }
 

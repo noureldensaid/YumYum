@@ -8,6 +8,7 @@ import androidx.lifecycle.viewModelScope
 import com.fyp.yumyum.data.repositorey.Repository
 import com.fyp.yumyum.models.Category
 import com.fyp.yumyum.models.Meal
+import com.fyp.yumyum.models.MealDetails
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -20,6 +21,8 @@ class MainViewModel @Inject constructor(
     private val _searchData: MutableLiveData<List<Meal>> = MutableLiveData()
     val searchData: LiveData<List<Meal>> = _searchData
 
+    private val _mealDetails: MutableLiveData<List<MealDetails>> = MutableLiveData()
+    val mealDetails: LiveData<List<MealDetails>> = _mealDetails
 
 
     private val _data: MutableLiveData<List<Category>> = MutableLiveData()
@@ -69,6 +72,11 @@ class MainViewModel @Inject constructor(
 
     }
 
+    fun getMealDetails(id: String) = viewModelScope.launch {
+        val response = repository.getMealDetails(id)
+        _mealDetails.postValue(response.body()?.meals)
+
+    }
 
     fun addFav(meal: Meal) = viewModelScope.launch { repository.addFav(meal) }
 

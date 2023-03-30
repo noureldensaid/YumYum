@@ -11,7 +11,7 @@ interface MealsDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insert(meal: Meal): Long
 
-    @Query("SELECT * FROM $TABLE_NAME")
+    @Query("SELECT * FROM meals_table ")
     fun getFavMeals(): LiveData<List<Meal>>
 
 

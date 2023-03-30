@@ -12,6 +12,7 @@ class Repository @Inject constructor(
     private val mealsDatabase: MealsDatabase
 ) {
 
+    suspend fun getMealDetails(id: String) = mealsApi.getMealDetails(id)
 
     suspend fun getCategories() = mealsApi.getCategories()
 

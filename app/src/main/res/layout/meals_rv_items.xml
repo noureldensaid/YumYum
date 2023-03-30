@@ -5,6 +5,7 @@
     android:layout_width="200dp"
     android:layout_height="wrap_content"
     app:cardCornerRadius="16dp"
+    android:layout_margin="8dp"
     app:cardElevation="4dp"
     app:cardUseCompatPadding="true">
 

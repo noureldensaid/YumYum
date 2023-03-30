@@ -45,6 +45,10 @@
         android:id="@+id/mealDetailsFragment"
         android:name="com.fyp.yumyum.ui.main.choosemeal.MealDetailsFragment"
         android:label="fragment_meal_details"
-        tools:layout="@layout/fragment_meal_details" />
+        tools:layout="@layout/fragment_meal_details" >
+        <argument
+            android:name="mealId"
+            app:argType="string" />
+    </fragment>
 
 </navigation>

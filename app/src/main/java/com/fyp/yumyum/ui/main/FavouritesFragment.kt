@@ -25,6 +25,10 @@ class FavouritesFragment : Fragment(R.layout.fragment_favourites) {
         super.onViewCreated(view, savedInstanceState)
         _binding = FragmentFavouritesBinding.bind(view)
         favAdapter = FavAdapter(viewModel)
+        viewModel.getFav().observe(viewLifecycleOwner, Observer {
+            favAdapter.differ.submitList(it)
+            Log.e("fav size", "onViewCreated: ${it.size}")
+        })
 
         binding.favsRv.apply {
             setHasFixedSize(true)
@@ -32,10 +36,6 @@ class FavouritesFragment : Fragment(R.layout.fragment_favourites) {
             adapter = favAdapter
         }
 
-        viewModel.getFav().observe(viewLifecycleOwner, Observer {
-            favAdapter.differ.submitList(it)
-            Log.e("fav size", "onViewCreated: ${it.size}")
-        })
 
 
     }
