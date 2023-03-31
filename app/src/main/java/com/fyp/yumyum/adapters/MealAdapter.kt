@@ -12,9 +12,8 @@ import com.fyp.yumyum.R
 import com.fyp.yumyum.databinding.MealsRvItemsBinding
 import com.fyp.yumyum.models.Meal
 import com.fyp.yumyum.ui.main.MainViewModel
-import javax.inject.Inject
 
-class MealAdapter @Inject constructor(private val viewModel: MainViewModel) :
+class MealAdapter(private val viewModel: MainViewModel) :
     RecyclerView.Adapter<MealAdapter.ViewHolder>() {
     inner class ViewHolder(private val binding: MealsRvItemsBinding) :
         RecyclerView.ViewHolder(binding.root) {

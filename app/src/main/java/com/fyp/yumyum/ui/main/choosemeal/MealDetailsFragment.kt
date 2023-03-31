@@ -3,11 +3,13 @@ package com.fyp.yumyum.ui.main.choosemeal
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
+import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.navArgs
+import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.bitmap.CenterCrop
+import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.fyp.yumyum.R
-import com.fyp.yumyum.adapters.MealDetailsAdapter
 import com.fyp.yumyum.databinding.FragmentMealDetailsBinding
 import com.fyp.yumyum.ui.main.MainViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -15,31 +17,41 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 
 class MealDetailsFragment : Fragment(R.layout.fragment_meal_details) {
-    private val viewModel by viewModels<MainViewModel>()
+    private val viewModel: MainViewModel by activityViewModels<MainViewModel>()
     private var _binding: FragmentMealDetailsBinding? = null
     private val binding get() = _binding!!
-    private lateinit var mealDetailsAdapter: MealDetailsAdapter
     private val args: MealDetailsFragmentArgs by navArgs()
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         _binding = FragmentMealDetailsBinding.bind(view)
-
-        mealDetailsAdapter = MealDetailsAdapter()
-
         val mealId = args.mealId
-
         viewModel.getMealDetails(mealId)
 
-
-        binding.mealDetail.apply {
-            setHasFixedSize(true)
-            adapter = mealDetailsAdapter
-        }
-
         viewModel.mealDetails.observe(viewLifecycleOwner, Observer {
-            mealDetailsAdapter.differ.submitList(it)
+            binding.apply {
+                if (it != null) {
+                    mealName.text = it.strMeal
+                    mealOrigin.text = it.strArea
+                    mealTags.text = it.strTags
+                    mealRecipe.text = it.strInstructions
+                    capacity1.text = it.strMeasure1
+                    capacity2.text = it.strMeasure2
+                    capacity3.text = it.strMeasure3
+                    capacity4.text = it.strMeasure4
+                    capacity5.text = it.strMeasure5
+                    ingredient1.text = it.strIngredient1
+                    ingredient2.text = it.strIngredient2
+                    ingredient3.text = it.strIngredient3
+                    ingredient4.text = it.strIngredient4
+                    ingredient5.text = it.strIngredient5
+                    Glide.with(view).load(it.strMealThumb)
+                        .transition(DrawableTransitionOptions.withCrossFade())
+                        .error(R.drawable.ic_wifi_broken).transform(CenterCrop())
+                        .placeholder(R.drawable.placeholder).into(mealIv)
+                }
+            }
         })
 
 

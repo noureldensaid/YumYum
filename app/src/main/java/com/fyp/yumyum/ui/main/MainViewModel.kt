@@ -18,11 +18,15 @@ class MainViewModel @Inject constructor(
     private val repository: Repository
 ) : ViewModel() {
 
+
+    val allFavorites: LiveData<List<Meal>> = repository.getFav()
+
+
     private val _searchData: MutableLiveData<List<Meal>> = MutableLiveData()
     val searchData: LiveData<List<Meal>> = _searchData
 
-    private val _mealDetails: MutableLiveData<List<MealDetails>> = MutableLiveData()
-    val mealDetails: LiveData<List<MealDetails>> = _mealDetails
+    private val _mealDetails: MutableLiveData<MealDetails?> = MutableLiveData()
+    val mealDetails: LiveData<MealDetails?> = _mealDetails
 
 
     private val _data: MutableLiveData<List<Category>> = MutableLiveData()
@@ -32,10 +36,11 @@ class MainViewModel @Inject constructor(
     private val _mealData: MutableLiveData<List<Meal>> = MutableLiveData()
     val mealData: LiveData<List<Meal>> = _mealData
 
+    val mealId: MutableLiveData<String> = MutableLiveData()
+
 
     init {
         getCategories()
-        getFav()
     }
 
 
@@ -74,15 +79,11 @@ class MainViewModel @Inject constructor(
 
     fun getMealDetails(id: String) = viewModelScope.launch {
         val response = repository.getMealDetails(id)
-        _mealDetails.postValue(response.body()?.meals)
+        _mealDetails.postValue(response)
 
     }
 
     fun addFav(meal: Meal) = viewModelScope.launch { repository.addFav(meal) }
 
     fun removeFav(meal: Meal) = viewModelScope.launch { repository.removeFav(meal) }
-
-    fun getFav() = repository.getFav()
-
-
 }

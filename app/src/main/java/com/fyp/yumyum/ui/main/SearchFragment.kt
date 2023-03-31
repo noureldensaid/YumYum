@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
@@ -15,7 +16,7 @@ import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class SearchFragment : Fragment(R.layout.fragment_search) {
-    private val viewModel by viewModels<MainViewModel>()
+    private val viewModel : MainViewModel by activityViewModels<MainViewModel>()
     private var _binding: FragmentSearchBinding? = null
     private val binding get() = _binding!!
     private lateinit var searchAdapter: MealAdapter
@@ -23,6 +24,9 @@ class SearchFragment : Fragment(R.layout.fragment_search) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         _binding = FragmentSearchBinding.bind(view)
+        viewModel.searchData.observe(viewLifecycleOwner, Observer {
+            searchAdapter.differ.submitList(it)
+        })
         searchAdapter = MealAdapter(viewModel)
         binding.searchRv.apply {
             setHasFixedSize(true)
@@ -43,9 +47,6 @@ class SearchFragment : Fragment(R.layout.fragment_search) {
             override fun onQueryTextChange(newText: String?): Boolean {
                 return false
             }
-        })
-        viewModel.searchData.observe(viewLifecycleOwner, Observer {
-            searchAdapter.differ.submitList(it)
         })
 
 
