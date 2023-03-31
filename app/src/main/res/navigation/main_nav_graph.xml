@@ -23,7 +23,11 @@
         android:id="@+id/searchFragment"
         android:name="com.fyp.yumyum.ui.main.SearchFragment"
         android:label="fragment_search"
-        tools:layout="@layout/fragment_search" />
+        tools:layout="@layout/fragment_search" >
+        <action
+            android:id="@+id/action_searchFragment_to_mealDetailsFragment"
+            app:destination="@id/mealDetailsFragment" />
+    </fragment>
     <fragment
         android:id="@+id/favouritesFragment"
         android:name="com.fyp.yumyum.ui.main.FavouritesFragment"

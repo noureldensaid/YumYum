@@ -5,8 +5,8 @@ import android.view.View
 import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.fyp.yumyum.R
 import com.fyp.yumyum.adapters.MealAdapter
@@ -16,7 +16,7 @@ import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class SearchFragment : Fragment(R.layout.fragment_search) {
-    private val viewModel : MainViewModel by activityViewModels<MainViewModel>()
+    private val viewModel: MainViewModel by activityViewModels<MainViewModel>()
     private var _binding: FragmentSearchBinding? = null
     private val binding get() = _binding!!
     private lateinit var searchAdapter: MealAdapter
@@ -49,13 +49,15 @@ class SearchFragment : Fragment(R.layout.fragment_search) {
             }
         })
 
+        searchAdapter.onItemClickListener = {
+            val args = Bundle()
+            args.putString("mealId", it.idMeal)
+            findNavController().navigate(R.id.action_searchFragment_to_mealDetailsFragment, args)
+        }
+
 
     }
 
-    //todo
-    // enhance ui and search
-    // finish profile and meal details fragment
-    // loading spinners
 
     override fun onDestroy() {
         super.onDestroy()

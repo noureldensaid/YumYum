@@ -7,14 +7,12 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.CenterCrop
-import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.fyp.yumyum.R
 import com.fyp.yumyum.databinding.MealsRvItemsBinding
 import com.fyp.yumyum.models.Meal
 import com.fyp.yumyum.ui.main.MainViewModel
-import javax.inject.Inject
 
-class FavAdapter (private val viewModel: MainViewModel) :
+class FavAdapter(private val viewModel: MainViewModel) :
     RecyclerView.Adapter<FavAdapter.ViewHolder>() {
     inner class ViewHolder(private val binding: MealsRvItemsBinding) :
         RecyclerView.ViewHolder(binding.root) {
@@ -25,9 +23,8 @@ class FavAdapter (private val viewModel: MainViewModel) :
                 icFav.isChecked = true
                 Glide.with(itemView)
                     .load(item.strMealThumb)
-                    .transition(DrawableTransitionOptions.withCrossFade())
-                    .error(R.drawable.ic_wifi_broken)
                     .transform(CenterCrop())
+                    .error(R.drawable.ic_wifi_broken)
                     .placeholder(R.drawable.logoo)
                     .into(categoryImg)
             }

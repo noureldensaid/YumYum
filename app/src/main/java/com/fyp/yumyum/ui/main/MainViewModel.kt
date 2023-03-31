@@ -41,6 +41,7 @@ class MainViewModel @Inject constructor(
 
     init {
         getCategories()
+        repository.getFav()
     }
 
 

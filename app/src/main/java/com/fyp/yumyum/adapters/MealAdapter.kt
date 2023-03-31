@@ -7,7 +7,6 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.CenterCrop
-import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.fyp.yumyum.R
 import com.fyp.yumyum.databinding.MealsRvItemsBinding
 import com.fyp.yumyum.models.Meal
@@ -24,9 +23,8 @@ class MealAdapter(private val viewModel: MainViewModel) :
                 categoryName.text = item.strMeal
                 Glide.with(itemView)
                     .load(item.strMealThumb)
-                    .transition(DrawableTransitionOptions.withCrossFade())
-                    .error(R.drawable.ic_wifi_broken)
                     .transform(CenterCrop())
+                    .error(R.drawable.ic_wifi_broken)
                     .placeholder(R.drawable.logoo)
                     .into(categoryImg)
             }

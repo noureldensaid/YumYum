@@ -7,7 +7,6 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.CenterCrop
-import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.fyp.yumyum.R
 import com.fyp.yumyum.databinding.HomeRvItemsBinding
 import com.fyp.yumyum.models.Category
@@ -21,14 +20,13 @@ class HomeAdapter : RecyclerView.Adapter<HomeAdapter.ViewHolder>() {
             }
             binding.apply {
                 categoryName.text = item.strCategory
-                Glide.with(itemView)
-                    .load(item.strCategoryThumb)
-                    .transition(DrawableTransitionOptions.withCrossFade())
-                    .transform(CenterCrop())
-                    .error(R.drawable.ic_wifi_broken)
-                    .placeholder(R.drawable.logoo)
-                    .into(categoryImg)
             }
+            Glide.with(itemView)
+                .load(item.strCategoryThumb)
+                .transform(CenterCrop())
+                .error(R.drawable.ic_wifi_broken)
+                .placeholder(R.drawable.logoo)
+                .into(binding.categoryImg)
         }
     }
 
