@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="200dp"
     android:layout_height="wrap_content"
-    app:cardCornerRadius="16dp"
     android:layout_margin="8dp"
+    app:cardCornerRadius="16dp"
     app:cardElevation="4dp"
     app:cardUseCompatPadding="true">
 
@@ -18,24 +18,23 @@
 
         <CheckBox
             android:id="@+id/ic_fav"
-            android:shadowColor="@color/Light_grayish_red"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="start"
             android:button="@drawable/fav_toggle"
             android:padding="24dp"
             android:scaleX="1.5"
-            app:buttonTint="@color/orange"
-             android:scaleY="1.5"
-            />
+            android:scaleY="1.5"
+            android:shadowColor="@color/Light_grayish_red"
+            app:buttonTint="@color/orange" />
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/category_img"
             android:layout_width="170dp"
             android:layout_height="150dp"
             android:layout_marginHorizontal="24dp"
-            app:civ_border_color="@color/orange"
-            app:civ_border_width="4dp"
+            app:civ_border_color="@color/Light_grayish_red"
+            app:civ_border_width="5dp"
             tools:src="@drawable/ic_home" />
 
         <TextView

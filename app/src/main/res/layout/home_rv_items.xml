@@ -22,8 +22,8 @@
             android:layout_width="200dp"
             android:layout_height="200dp"
             android:padding="24dp"
-            app:civ_border_color="@color/orange"
-            app:civ_border_width="4dp"
+            app:civ_border_color="@color/Light_grayish_red"
+            app:civ_border_width="5dp"
             tools:src="@drawable/ic_home" />
 
         <TextView
