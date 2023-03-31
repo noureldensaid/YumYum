@@ -25,7 +25,7 @@ class HomeAdapter : RecyclerView.Adapter<HomeAdapter.ViewHolder>() {
                 .load(item.strCategoryThumb)
                 .transform(CenterCrop())
                 .error(R.drawable.ic_wifi_broken)
-                .placeholder(R.drawable.logoo)
+                .placeholder(R.drawable.ic_loading_anim)
                 .into(binding.categoryImg)
         }
     }

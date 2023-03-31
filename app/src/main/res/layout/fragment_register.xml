@@ -23,7 +23,7 @@
             android:layout_width="match_parent"
             android:layout_height="200dp"
             android:padding="24dp"
-            android:src="@drawable/yummy" />
+            android:src="@drawable/ic_yummy" />
 
         <com.google.android.material.tabs.TabLayout
             android:id="@+id/tab_layout"

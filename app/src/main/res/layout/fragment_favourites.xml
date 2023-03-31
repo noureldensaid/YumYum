@@ -6,6 +6,19 @@
     android:layout_height="match_parent"
     tools:context=".ui.main.FavouritesFragment">
 
+    <ImageView
+        android:id="@+id/fav_empty_list"
+        tools:visibility="visible"
+        android:visibility="gone"
+        android:padding="48dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:src="@drawable/empty_favs"/>
+
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/favs_rv"
         android:layout_width="match_parent"

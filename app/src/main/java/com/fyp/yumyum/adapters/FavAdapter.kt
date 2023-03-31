@@ -25,7 +25,7 @@ class FavAdapter(private val viewModel: MainViewModel) :
                     .load(item.strMealThumb)
                     .transform(CenterCrop())
                     .error(R.drawable.ic_wifi_broken)
-                    .placeholder(R.drawable.logoo)
+                    .placeholder(R.drawable.ic_loading_anim)
                     .into(categoryImg)
             }
             binding.icFav.setOnClickListener {

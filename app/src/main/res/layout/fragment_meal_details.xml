@@ -24,7 +24,7 @@
                 android:id="@+id/meal_iv"
                 android:layout_width="match_parent"
                 android:layout_height="250dp"
-                android:src="@drawable/placeholder"
+                android:src="@drawable/ic_loading_anim"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />

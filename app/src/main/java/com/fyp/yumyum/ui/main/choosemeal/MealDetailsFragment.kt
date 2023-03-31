@@ -49,7 +49,7 @@ class MealDetailsFragment : Fragment(R.layout.fragment_meal_details) {
                     Glide.with(view).load(it.strMealThumb)
                         .transition(DrawableTransitionOptions.withCrossFade())
                         .error(R.drawable.ic_wifi_broken).transform(CenterCrop())
-                        .placeholder(R.drawable.placeholder).into(mealIv)
+                        .placeholder(R.drawable.ic_loading_anim).into(mealIv)
                 }
             }
         })

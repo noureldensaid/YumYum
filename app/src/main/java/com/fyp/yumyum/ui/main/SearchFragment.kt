@@ -25,7 +25,17 @@ class SearchFragment : Fragment(R.layout.fragment_search) {
         super.onViewCreated(view, savedInstanceState)
         _binding = FragmentSearchBinding.bind(view)
         viewModel.searchData.observe(viewLifecycleOwner, Observer {
-            searchAdapter.differ.submitList(it)
+            if (it != null) {
+                binding.noResultsIv.visibility = View.VISIBLE
+                binding.noResultsIv.visibility = View.GONE
+                binding.searchPlaceholder.visibility = View.GONE
+                searchAdapter.differ.submitList(it)
+            } else {
+                binding.searchPlaceholder.visibility = View.GONE
+                binding.searchRv.visibility = View.GONE
+                binding.noResultsIv.visibility = View.VISIBLE
+            }
+
         })
         searchAdapter = MealAdapter(viewModel)
         binding.searchRv.apply {

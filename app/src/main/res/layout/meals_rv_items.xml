@@ -34,7 +34,7 @@
             android:layout_height="150dp"
             android:layout_marginHorizontal="24dp"
             app:civ_border_color="@color/Light_grayish_red"
-            app:civ_border_width="5dp"
+            app:civ_border_width="8dp"
             tools:src="@drawable/ic_home" />
 
         <TextView

@@ -18,8 +18,7 @@ class MainViewModel @Inject constructor(
     private val repository: Repository
 ) : ViewModel() {
 
-
-    val allFavorites: LiveData<List<Meal>> = repository.getFav()
+    val allFavorites: LiveData<List<Meal>>
 
 
     private val _searchData: MutableLiveData<List<Meal>> = MutableLiveData()
@@ -41,7 +40,7 @@ class MainViewModel @Inject constructor(
 
     init {
         getCategories()
-        repository.getFav()
+        allFavorites = repository.getFav()
     }
 
 
@@ -87,4 +86,11 @@ class MainViewModel @Inject constructor(
     fun addFav(meal: Meal) = viewModelScope.launch { repository.addFav(meal) }
 
     fun removeFav(meal: Meal) = viewModelScope.launch { repository.removeFav(meal) }
+
+
+    fun updateItem(meal: Meal) =
+        viewModelScope.launch {
+            repository.update(meal)
+
+        }
 }
