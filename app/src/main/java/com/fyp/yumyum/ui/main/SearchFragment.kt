@@ -24,15 +24,14 @@ class SearchFragment : Fragment(R.layout.fragment_search) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         _binding = FragmentSearchBinding.bind(view)
-        viewModel.searchData.observe(viewLifecycleOwner, Observer {
+         viewModel.searchData.observe(viewLifecycleOwner, Observer {
             if (it != null) {
-                binding.noResultsIv.visibility = View.VISIBLE
-                binding.noResultsIv.visibility = View.GONE
                 binding.searchPlaceholder.visibility = View.GONE
+                binding.searchRv.visibility = View.VISIBLE
+                binding.noResultsIv.visibility = View.GONE
                 searchAdapter.differ.submitList(it)
             } else {
                 binding.searchPlaceholder.visibility = View.GONE
-                binding.searchRv.visibility = View.GONE
                 binding.noResultsIv.visibility = View.VISIBLE
             }
 
@@ -57,6 +56,7 @@ class SearchFragment : Fragment(R.layout.fragment_search) {
             override fun onQueryTextChange(newText: String?): Boolean {
                 return false
             }
+
         })
 
         searchAdapter.onItemClickListener = {
@@ -72,5 +72,11 @@ class SearchFragment : Fragment(R.layout.fragment_search) {
     override fun onDestroy() {
         super.onDestroy()
         _binding = null
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        viewModel.clearSearchResults()
+        binding.searchTv.clearFocus()
     }
 }

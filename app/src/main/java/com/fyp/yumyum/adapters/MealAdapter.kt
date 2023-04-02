@@ -19,7 +19,6 @@ class MealAdapter(private val viewModel: MainViewModel) :
         fun bind(item: Meal) {
             itemView.setOnClickListener { onItemClickListener?.invoke(item) }
             binding.apply {
-                icFav.isChecked = (item.isFavorite)
                 categoryName.text = item.strMeal
                 Glide.with(itemView)
                     .load(item.strMealThumb)
@@ -29,16 +28,7 @@ class MealAdapter(private val viewModel: MainViewModel) :
                     .into(categoryImg)
             }
             binding.icFav.setOnClickListener {
-                when (binding.icFav.isChecked) {
-                    true -> {
-                        item.isFavorite = true
-                        viewModel.addFav(item)
-                    }
-                    false -> {
-                        item.isFavorite = false
-                        viewModel.removeFav(item)
-                    }
-                }
+                viewModel.addFav(item)
             }
         }
     }

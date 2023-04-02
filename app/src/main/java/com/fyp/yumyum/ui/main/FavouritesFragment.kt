@@ -24,18 +24,17 @@ class FavouritesFragment : Fragment(R.layout.fragment_favourites) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         _binding = FragmentFavouritesBinding.bind(view)
-
+        favAdapter = FavAdapter(viewModel)
         viewModel.allFavorites.observe(viewLifecycleOwner, Observer {
-            if (it.isNotEmpty()) {
+            if (it!=null) {
                 favAdapter.differ.submitList(it)
-                Log.e("fav size", "onViewCreated: ${it.size}")
+                 Log.e("fav size", "onViewCreated: ${it.size}")
             } else {
                 binding.favsRv.visibility = View.GONE
                 binding.favEmptyList.visibility = View.VISIBLE
             }
         })
 
-        favAdapter = FavAdapter(viewModel)
         binding.favsRv.apply {
             setHasFixedSize(true)
             layoutManager = StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
@@ -46,6 +45,19 @@ class FavouritesFragment : Fragment(R.layout.fragment_favourites) {
     override fun onDestroy() {
         super.onDestroy()
         _binding = null
+    }
+
+    override fun onResume() {
+        super.onResume()
+        viewModel.allFavorites.observe(viewLifecycleOwner, Observer {
+            if (it.isNotEmpty()) {
+                favAdapter.differ.submitList(it)
+                Log.e("fav size", "onViewCreated: ${it.size}")
+            } else {
+                binding.favsRv.visibility = View.GONE
+                binding.favEmptyList.visibility = View.VISIBLE
+            }
+        })
     }
 }
 

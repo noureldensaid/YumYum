@@ -36,7 +36,6 @@ class MainActivity : AppCompatActivity() {
                 R.id.favouritesFragment -> binding.bottomNavigationView.visibility = View.VISIBLE
                 R.id.searchFragment -> binding.bottomNavigationView.visibility = View.VISIBLE
                 R.id.profileFragment -> binding.bottomNavigationView.visibility = View.VISIBLE
-
                 else -> binding.bottomNavigationView.visibility = View.GONE
             }
         }
@@ -47,4 +46,7 @@ class MainActivity : AppCompatActivity() {
             findNavController(R.id.main_fragment_container)
         return navController.navigateUp()
     }
+
+
+
 }

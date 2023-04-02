@@ -18,8 +18,12 @@ class MainViewModel @Inject constructor(
     private val repository: Repository
 ) : ViewModel() {
 
-    val allFavorites: LiveData<List<Meal>>
+    var allFavorites: LiveData<List<Meal>>
 
+    init {
+        getCategories()
+        allFavorites = repository.getFav()
+    }
 
     private val _searchData: MutableLiveData<List<Meal>> = MutableLiveData()
     val searchData: LiveData<List<Meal>> = _searchData
@@ -38,10 +42,7 @@ class MainViewModel @Inject constructor(
     val mealId: MutableLiveData<String> = MutableLiveData()
 
 
-    init {
-        getCategories()
-        allFavorites = repository.getFav()
-    }
+
 
 
     private fun getCategories() = viewModelScope.launch {
@@ -71,10 +72,12 @@ class MainViewModel @Inject constructor(
     }
 
     fun search(query: String) = viewModelScope.launch {
-
-        val response = repository.searchForMeal(query)
-        _searchData.postValue(response.body()?.meals)
-
+        if (query.isNotEmpty()) {
+            val response = repository.searchForMeal(query.trim())
+            _searchData.postValue(response.body()?.meals)
+        } else {
+            _searchData.postValue(emptyList())
+        }
     }
 
     fun getMealDetails(id: String) = viewModelScope.launch {
@@ -88,9 +91,17 @@ class MainViewModel @Inject constructor(
     fun removeFav(meal: Meal) = viewModelScope.launch { repository.removeFav(meal) }
 
 
-    fun updateItem(meal: Meal) =
+    fun update(meal: Meal) =
         viewModelScope.launch {
             repository.update(meal)
-
         }
+
+    fun clearSearchResults() {
+        _searchData.value = emptyList()
+    }
+
+    override fun onCleared() {
+        super.onCleared()
+        clearSearchResults()
+    }
 }

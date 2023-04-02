@@ -29,8 +29,7 @@
         android:layout_height="match_parent"
         android:padding="48dp"
         android:src="@drawable/ic_no_results"
-        android:visibility="gone"
-        />
+        android:visibility="gone" />
 
 
     <ImageView
@@ -39,15 +38,14 @@
         android:layout_height="match_parent"
         android:padding="48dp"
         android:src="@drawable/ic_yummy"
-        android:visibility="visible"
-         />
+        android:visibility="visible" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/search_rv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:visibility="visible"
+        android:visibility="gone"
         app:layoutManager="androidx.recyclerview.widget.StaggeredGridLayoutManager"
         app:spanCount="2"
         tools:itemCount="2"
