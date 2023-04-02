@@ -32,7 +32,11 @@
         android:id="@+id/favouritesFragment"
         android:name="com.fyp.yumyum.ui.main.FavouritesFragment"
         android:label="fragment_favourites"
-        tools:layout="@layout/fragment_favourites" />
+        tools:layout="@layout/fragment_favourites" >
+        <action
+            android:id="@+id/action_favouritesFragment_to_mealDetailsFragment"
+            app:destination="@id/mealDetailsFragment" />
+    </fragment>
     <fragment
         android:id="@+id/mealsFragment"
         android:name="com.fyp.yumyum.ui.main.choosemeal.MealsFragment"

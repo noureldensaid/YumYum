@@ -38,7 +38,7 @@ class FavAdapter(private val viewModel: MainViewModel) :
 
     private val differCallback = object : DiffUtil.ItemCallback<Meal>() {
         override fun areItemsTheSame(oldItem: Meal, newItem: Meal): Boolean {
-            return oldItem.idMeal == newItem.idMeal
+            return oldItem.id == newItem.id
         }
 
         override fun areContentsTheSame(oldItem: Meal, newItem: Meal): Boolean {

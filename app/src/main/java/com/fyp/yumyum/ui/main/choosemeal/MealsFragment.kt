@@ -20,9 +20,10 @@ import dagger.hilt.android.AndroidEntryPoint
 class MealsFragment : Fragment(R.layout.fragment_meals) {
     private val viewModel : MainViewModel by activityViewModels<MainViewModel>()
     private var _binding: FragmentMealsBinding? = null
+    private val binding get() = _binding!!
     private val args: MealsFragmentArgs by navArgs()
     private lateinit var mealAdapter: MealAdapter
-    private val binding get() = _binding!!
+
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
