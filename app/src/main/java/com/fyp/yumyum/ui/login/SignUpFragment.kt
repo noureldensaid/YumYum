@@ -5,9 +5,9 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import com.fyp.yumyum.ui.main.MainActivity
 import com.fyp.yumyum.R
- import com.fyp.yumyum.databinding.FragmentSignUpBinding
+import com.fyp.yumyum.databinding.FragmentSignUpBinding
+import com.fyp.yumyum.ui.main.MainActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
@@ -28,23 +28,33 @@ class SignUpFragment : Fragment(R.layout.fragment_sign_up) {
         binding.apply {
             signUpBtn.setOnClickListener {
                 val email = editTextEmail.editText?.text.toString()
+                val username = editTextUserName.editText?.text.toString()
                 val psw = editTextPassword.editText?.text.toString()
 
-                auth.createUserWithEmailAndPassword(email, psw)
-                    .addOnCompleteListener { task ->
-                        if (task.isSuccessful) {
-                            startActivity(Intent(activity, MainActivity::class.java))
-                            activity?.finish()
-                        } else {
-                            Toast.makeText(context, task.exception!!.message, Toast.LENGTH_SHORT)
-                                .show()
+                if (email.isNotEmpty() && psw.isNotEmpty() && username.isNotEmpty()) {
+                    auth.createUserWithEmailAndPassword(email, psw)
+                        .addOnCompleteListener { task ->
+                            if (task.isSuccessful) {
+                                binding.apply {
+                                    signUpBtn.visibility = View.GONE
+                                    loadingProgressbar.visibility = View.VISIBLE
+                                }
+                                startActivity(Intent(activity, MainActivity::class.java))
+                                activity?.finish()
+                            } else {
+                                Toast.makeText(
+                                    context,
+                                    task.exception!!.message,
+                                    Toast.LENGTH_SHORT
+                                )
+                                    .show()
+                            }
                         }
-                    }
-
+                } else {
+                    Toast.makeText(context, "Invalid email or password", Toast.LENGTH_SHORT).show()
+                }
             }
         }
-
-
     }
 
     override fun onDestroy() {

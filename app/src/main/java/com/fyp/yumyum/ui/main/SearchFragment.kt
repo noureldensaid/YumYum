@@ -37,7 +37,6 @@ class SearchFragment : Fragment(R.layout.fragment_search) {
             } else {
                 binding.noResultsIv.visibility = View.VISIBLE
             }
-
         })
         searchAdapter = MealAdapter(viewModel)
         binding.searchRv.apply {
@@ -51,15 +50,14 @@ class SearchFragment : Fragment(R.layout.fragment_search) {
                     viewModel.search(query)
                     binding.searchRv.scrollToPosition(0)
                     binding.searchTv.clearFocus()
+                    binding.searchTv.setQuery("", false)
                     return true
                 }
                 return true
             }
-
             override fun onQueryTextChange(newText: String?): Boolean {
                 return false
             }
-
         })
 
         searchAdapter.onItemClickListener = {
@@ -71,10 +69,12 @@ class SearchFragment : Fragment(R.layout.fragment_search) {
 
     }
 
-
     override fun onDestroy() {
         super.onDestroy()
-         _binding = null
+        viewModel.clearSearchResults()
+        binding.searchRv.visibility = View.GONE
+        binding.searchPlaceholder.visibility = View.VISIBLE
+        _binding = null
     }
 
 

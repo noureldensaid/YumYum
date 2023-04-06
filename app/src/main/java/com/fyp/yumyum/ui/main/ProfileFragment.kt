@@ -4,9 +4,9 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
-import com.fyp.yumyum.ui.login.LoginActivity
 import com.fyp.yumyum.R
 import com.fyp.yumyum.databinding.FragmentProfileBinding
+import com.fyp.yumyum.ui.login.LoginActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
@@ -24,7 +24,9 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
         _binding = FragmentProfileBinding.bind(view)
         auth = Firebase.auth
 
-        binding.logout.setOnClickListener {
+        binding.userGmail.text = auth.currentUser?.email
+        binding.userName.text = auth.currentUser?.displayName
+        binding.logoutBtn.setOnClickListener {
             auth.signOut()
             startActivity(Intent(activity, LoginActivity::class.java))
             activity?.finish()

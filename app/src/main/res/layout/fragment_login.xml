@@ -68,11 +68,11 @@
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/login_btn"
-        android:layout_marginTop="64dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|center"
         android:layout_marginHorizontal="48dp"
+        android:layout_marginTop="64dp"
         android:backgroundTint="@color/orange"
         android:padding="16dp"
         android:text="Login"
@@ -80,6 +80,13 @@
         android:textColor="@color/ghost_white"
         android:textSize="20sp"
         app:cornerRadius="24dp" />
+
+    <ProgressBar
+        android:id="@+id/loading_progressbar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:visibility="gone" />
 
 
 </LinearLayout>

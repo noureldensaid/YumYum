@@ -27,9 +27,10 @@ class FavouritesFragment : Fragment(R.layout.fragment_favourites) {
         _binding = FragmentFavouritesBinding.bind(view)
         favAdapter = FavAdapter(viewModel)
         viewModel.allFavorites.observe(viewLifecycleOwner, Observer {
-            if (it != null) {
+            if (it.isNotEmpty()) {
                 favAdapter.differ.submitList(it)
                 Log.e("fav size", "onViewCreated: ${it.size}")
+                binding.favEmptyList.visibility = View.GONE
             } else {
                 binding.favsRv.visibility = View.GONE
                 binding.favEmptyList.visibility = View.VISIBLE
