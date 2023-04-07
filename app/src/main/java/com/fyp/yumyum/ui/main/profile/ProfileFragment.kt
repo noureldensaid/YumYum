@@ -1,4 +1,4 @@
-package com.fyp.yumyum.ui.main
+package com.fyp.yumyum.ui.main.profile
 
 import android.app.Dialog
 import android.content.Intent
@@ -7,14 +7,12 @@ import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
-import androidx.activity.viewModels
-import androidx.compose.ui.text.capitalize
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import com.fyp.yumyum.R
 import com.fyp.yumyum.databinding.FragmentProfileBinding
 import com.fyp.yumyum.ui.login.LoginActivity
+import com.fyp.yumyum.ui.main.MainViewModel
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase

@@ -1,4 +1,4 @@
-package com.fyp.yumyum.ui.main
+package com.fyp.yumyum.ui.main.search
 
 import android.os.Bundle
 import android.view.View
@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.fyp.yumyum.R
 import com.fyp.yumyum.adapters.MealAdapter
 import com.fyp.yumyum.databinding.FragmentSearchBinding
+import com.fyp.yumyum.ui.main.MainViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 

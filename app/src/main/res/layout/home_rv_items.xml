@@ -5,7 +5,7 @@
     android:layout_width="200dp"
     android:layout_height="wrap_content"
     android:layout_margin="8dp"
-    tools:context=".ui.main.ProfileFragment">
+    tools:context=".ui.main.profile.ProfileFragment">
 
 
     <LinearLayout

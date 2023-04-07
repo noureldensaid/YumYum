@@ -16,12 +16,12 @@
     </fragment>
     <fragment
         android:id="@+id/profileFragment"
-        android:name="com.fyp.yumyum.ui.main.ProfileFragment"
+        android:name="com.fyp.yumyum.ui.main.profile.ProfileFragment"
         android:label="fragment_profile"
         tools:layout="@layout/fragment_profile" />
     <fragment
         android:id="@+id/searchFragment"
-        android:name="com.fyp.yumyum.ui.main.SearchFragment"
+        android:name="com.fyp.yumyum.ui.main.search.SearchFragment"
         android:label="fragment_search"
         tools:layout="@layout/fragment_search" >
         <action
@@ -30,7 +30,7 @@
     </fragment>
     <fragment
         android:id="@+id/favouritesFragment"
-        android:name="com.fyp.yumyum.ui.main.FavouritesFragment"
+        android:name="com.fyp.yumyum.ui.main.favourites.FavouritesFragment"
         android:label="fragment_favourites"
         tools:layout="@layout/fragment_favourites" >
         <action

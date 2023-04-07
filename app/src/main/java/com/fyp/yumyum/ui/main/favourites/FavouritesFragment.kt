@@ -1,4 +1,4 @@
-package com.fyp.yumyum.ui.main
+package com.fyp.yumyum.ui.main.favourites
 
 import android.os.Bundle
 import android.util.Log
@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.fyp.yumyum.R
 import com.fyp.yumyum.adapters.FavAdapter
 import com.fyp.yumyum.databinding.FragmentFavouritesBinding
+import com.fyp.yumyum.ui.main.MainViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 
