@@ -47,7 +47,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
     }
 
     private fun updateWelcomeMsg() {
-        val username = viewModel.getUserName()
+        val username = viewModel.getUserName()?.capitalize()
         binding.userName.text = "Hello $username,"
     }
 

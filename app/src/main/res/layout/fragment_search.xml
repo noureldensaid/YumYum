@@ -39,7 +39,7 @@
         android:layout_height="match_parent"
         android:padding="24dp"
         android:elevation="8dp"
-        android:src="@drawable/search_palceholder"
+        android:src="@drawable/search_placeholder"
         android:visibility="visible" />
 
     <androidx.recyclerview.widget.RecyclerView
