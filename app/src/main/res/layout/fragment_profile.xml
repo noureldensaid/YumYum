@@ -4,15 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center"
-    android:orientation="vertical"
     tools:context=".ui.main.ProfileFragment">
 
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_marginTop="16dp"
+        android:gravity="center_vertical"
         android:orientation="vertical">
 
         <androidx.cardview.widget.CardView
@@ -45,11 +44,11 @@
                     android:gravity="center"
                     android:text="Nour"
                     android:textColor="#333"
-                    android:textSize="30sp" />
+                    android:textSize="30sp"
+                    android:textStyle="bold" />
 
 
                 <TextView
-
                     android:id="@+id/user_gmail"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -86,14 +85,15 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true">
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/imageview_account_profile"
             android:layout_width="150dp"
             android:layout_height="150dp"
-            android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
+            android:layout_marginBottom="250dp"
             android:src="@drawable/ic_user_avatar"
             app:civ_border_color="@color/ghost_white"
             app:civ_border_width="2dp" />
