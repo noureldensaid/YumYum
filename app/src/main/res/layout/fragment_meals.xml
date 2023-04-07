@@ -17,6 +17,6 @@
         app:layout_constraintTop_toTopOf="parent"
         app:spanCount="2"
         tools:itemCount="2"
-        tools:listitem="@layout/home_rv_items" />
+        tools:listitem="@layout/meals_rv_items" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

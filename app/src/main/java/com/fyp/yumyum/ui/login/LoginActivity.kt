@@ -1,9 +1,10 @@
 package com.fyp.yumyum.ui.login
 
+import android.graphics.Color
 import android.os.Bundle
+import android.view.Window
+import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
-import androidx.datastore.core.DataStore
-import androidx.datastore.preferences.core.Preferences
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
@@ -19,7 +20,7 @@ class LoginActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityLoginBinding.inflate(layoutInflater)
-           setContentView(binding.root)
+        setContentView(binding.root)
         setUpNavigation()
     }
 
@@ -34,4 +35,12 @@ class LoginActivity : AppCompatActivity() {
             findNavController(R.id.main_fragment_container)
         return navController.navigateUp()
     }
+
+    fun updateStatusBarColor(color: String) {
+        val window: Window = window
+        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
+        window.statusBarColor = Color.parseColor(color)
+    }
+
+
 }

@@ -1,7 +1,6 @@
 package com.fyp.yumyum.ui.main
 
 import android.graphics.Color
-import android.os.Build
 import android.os.Bundle
 import android.view.View
 import android.view.Window
@@ -25,7 +24,7 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         setUpNavigation()
-        updateStatusBarColor("#F5F5F8")
+
     }
 
 
@@ -37,13 +36,41 @@ class MainActivity : AppCompatActivity() {
 
         mainNavController.addOnDestinationChangedListener { _, destination, _ ->
             when (destination.id) {
-                R.id.homeFragment -> binding.bottomNavigationView.visibility = View.VISIBLE
-                R.id.favouritesFragment -> binding.bottomNavigationView.visibility = View.VISIBLE
-                R.id.searchFragment -> binding.bottomNavigationView.visibility = View.VISIBLE
-                R.id.profileFragment -> binding.bottomNavigationView.visibility = View.VISIBLE
-                else -> binding.bottomNavigationView.visibility = View.GONE
+                R.id.homeFragment -> {
+                    binding.apply {
+                        bottomNavigationView.visibility = View.VISIBLE
+                        toolbar.visibility = View.GONE
+                    }
+                }
+                R.id.favouritesFragment -> {
+                    binding.apply {
+                        bottomNavigationView.visibility = View.VISIBLE
+                        toolbar.visibility = View.GONE
+                    }
+                }
+                R.id.searchFragment -> {
+                    binding.apply {
+                        bottomNavigationView.visibility = View.VISIBLE
+                        toolbar.visibility = View.GONE
+                    }
+                }
+                R.id.profileFragment -> {
+                    binding.apply {
+                        bottomNavigationView.visibility = View.VISIBLE
+                        toolbar.visibility = View.GONE
+                    }
+                }
+                else -> {
+                    binding.bottomNavigationView.visibility = View.GONE
+                    binding.toolbar.visibility = View.VISIBLE
+                }
             }
         }
+
+        setSupportActionBar(binding.toolbar)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true);
+        supportActionBar?.setDisplayShowHomeEnabled(true);
+        updateStatusBarColor("#F5F5F8")
     }
 
     override fun onSupportNavigateUp(): Boolean {
@@ -57,6 +84,4 @@ class MainActivity : AppCompatActivity() {
         window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
         window.statusBarColor = Color.parseColor(color)
     }
-
-
 }

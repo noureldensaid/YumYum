@@ -6,9 +6,9 @@ import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
-import com.fyp.yumyum.ui.main.MainActivity
 import com.fyp.yumyum.R
 import com.fyp.yumyum.databinding.FragmentLottiLoadingBinding
+import com.fyp.yumyum.ui.main.MainActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
@@ -36,7 +36,6 @@ class LottiLoadingFragment : Fragment(R.layout.fragment_lotti_loading) {
         })
 
     }
-
 
     private fun setUpAuth() {
         auth = Firebase.auth

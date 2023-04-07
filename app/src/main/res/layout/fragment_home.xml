@@ -4,29 +4,70 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-     tools:context=".ui.main.choosemeal.HomeFragment">
+    tools:context=".ui.main.choosemeal.HomeFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
+        <TextView
+            android:id="@+id/user_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:layout_marginStart="16dp"
+            android:padding="4dp"
+            android:text="Hello Nour,"
+            android:textColor="@color/orange"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/welcome_msg"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:padding="4dp"
+            android:text="What do you want to cook today?"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="@id/user_name"
+            app:layout_constraintTop_toBottomOf="@id/user_name" />
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/welcome_avatar"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginEnd="8dp"
+            android:padding="8dp"
+            android:src="@drawable/ic_user_avatar"
+            app:civ_border_color="@color/Light_grayish_red"
+            app:civ_border_width="8dp"
+            app:layout_constraintBottom_toBottomOf="@+id/welcome_msg"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/user_name" />
+
         <androidx.cardview.widget.CardView
             android:id="@+id/cardView"
             android:layout_width="match_parent"
             android:layout_height="200dp"
-             android:backgroundTint="@color/orange"
+            android:layout_marginHorizontal="16dp"
+            android:backgroundTint="@color/orange"
+            android:elevation="8dp"
             app:cardCornerRadius="16dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintTop_toBottomOf="@id/welcome_avatar">
 
 
             <com.denzcoskun.imageslider.ImageSlider
                 android:id="@+id/imageSlider"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:iss_auto_cycle="true"
-                app:iss_corner_radius="5"
+                 app:iss_auto_cycle="true"
+                app:iss_corner_radius="16"
                 app:iss_delay="0"
                 app:iss_error_image="@android:color/darker_gray"
                 app:iss_period="1000"
@@ -40,6 +81,7 @@
             android:id="@+id/home_rv"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
             android:orientation="vertical"
             android:paddingBottom="48dp"
             app:layoutManager="androidx.recyclerview.widget.StaggeredGridLayoutManager"

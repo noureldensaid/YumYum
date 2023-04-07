@@ -7,8 +7,10 @@ import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
+import androidx.activity.viewModels
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.fragment.app.viewModels
 import com.fyp.yumyum.R
 import com.fyp.yumyum.databinding.FragmentProfileBinding
 import com.fyp.yumyum.ui.login.LoginActivity
@@ -23,7 +25,7 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
     private var _binding: FragmentProfileBinding? = null
     private val binding get() = _binding!!
     private lateinit var auth: FirebaseAuth
-    private val viewModel: MainViewModel by activityViewModels<MainViewModel>()
+    private val viewModel: MainViewModel by viewModels<MainViewModel>()
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

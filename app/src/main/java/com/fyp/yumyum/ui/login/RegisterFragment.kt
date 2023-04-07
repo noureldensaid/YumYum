@@ -20,8 +20,7 @@ class RegisterFragment : Fragment(R.layout.fragment_register) {
         super.onViewCreated(view, savedInstanceState)
         _binding = FragmentRegisterBinding.bind(view)
         setUpViewPager(childFragmentManager, lifecycle)
-
-    }
+     }
 
     private fun setUpViewPager(fragmentManager: FragmentManager, lifecycle: Lifecycle) {
         binding.apply {

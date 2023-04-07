@@ -27,6 +27,7 @@
         android:id="@+id/no_results_iv"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
+        android:gravity="center_horizontal"
         android:padding="48dp"
         android:src="@drawable/ic_no_results"
         android:visibility="gone" />
@@ -34,10 +35,11 @@
 
     <ImageView
         android:id="@+id/search_placeholder"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:padding="48dp"
-        android:src="@drawable/ic_yummy"
+        android:padding="24dp"
+        android:elevation="8dp"
+        android:src="@drawable/search_palceholder"
         android:visibility="visible" />
 
     <androidx.recyclerview.widget.RecyclerView

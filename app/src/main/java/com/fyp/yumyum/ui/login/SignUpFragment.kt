@@ -4,8 +4,10 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
+import androidx.activity.viewModels
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.fragment.app.viewModels
 import com.fyp.yumyum.R
 import com.fyp.yumyum.databinding.FragmentSignUpBinding
 import com.fyp.yumyum.ui.main.MainActivity
@@ -21,7 +23,7 @@ class SignUpFragment : Fragment(R.layout.fragment_sign_up) {
     private var _binding: FragmentSignUpBinding? = null
     private val binding get() = _binding!!
     private lateinit var auth: FirebaseAuth
-    private val viewModel: MainViewModel by activityViewModels<MainViewModel>()
+    private val viewModel: MainViewModel by viewModels<MainViewModel>()
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

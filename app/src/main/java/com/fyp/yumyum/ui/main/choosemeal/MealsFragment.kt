@@ -2,9 +2,9 @@ package com.fyp.yumyum.ui.main.choosemeal
 
 import android.os.Bundle
 import android.view.View
+import android.widget.Toolbar
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
@@ -18,7 +18,7 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 
 class MealsFragment : Fragment(R.layout.fragment_meals) {
-    private val viewModel : MainViewModel by activityViewModels<MainViewModel>()
+    private val viewModel: MainViewModel by activityViewModels<MainViewModel>()
     private var _binding: FragmentMealsBinding? = null
     private val binding get() = _binding!!
     private val args: MealsFragmentArgs by navArgs()
@@ -29,6 +29,8 @@ class MealsFragment : Fragment(R.layout.fragment_meals) {
         super.onViewCreated(view, savedInstanceState)
         _binding = FragmentMealsBinding.bind(view)
         val categoryName = args.categoryName
+        updateToolbar(categoryName)
+
         viewModel.getMeals(categoryName)
         viewModel.mealData.observe(viewLifecycleOwner, Observer {
             mealAdapter.differ.submitList(it)
@@ -44,6 +46,13 @@ class MealsFragment : Fragment(R.layout.fragment_meals) {
             args.putString("mealId", it.idMeal)
             findNavController().navigate(R.id.action_mealsFragment_to_mealDetailsFragment, args)
         }
+    }
+
+
+    private fun updateToolbar(string: String){
+        val categoryName = args.categoryName
+        activity?.findViewById<androidx.appcompat.widget.Toolbar>(R.id.toolbar)?.title = string
+
     }
 
     override fun onDestroy() {

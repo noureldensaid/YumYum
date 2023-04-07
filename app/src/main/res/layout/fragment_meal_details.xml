@@ -8,6 +8,8 @@
 
 
     <ScrollView
+        android:layout_marginBottom="48dp"
+
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:fillViewport="true"
@@ -18,191 +20,238 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
+
             android:layout_height="wrap_content">
 
-            <ImageView
+            <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/meal_iv"
                 android:layout_width="match_parent"
                 android:layout_height="250dp"
                 android:scaleType="centerCrop"
+                app:civ_border_color="@color/Light_grayish_red"
+                app:civ_border_width="10dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                tools:src="@drawable/search_palceholder" />
 
             <TextView
-                android:id="@+id/meal_name"
-                android:layout_width="wrap_content"
+                android:id="@+id/meal_origin"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginVertical="16dp"
                 android:layout_marginStart="16dp"
                 android:ellipsize="end"
-                android:maxLines="2"
-                android:text="Teriyaki Chicken Casserole"
-                android:textColor="@android:color/black"
-                android:textSize="20sp"
-                android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/meal_iv" />
-
-            <TextView
-                android:id="@+id/meal_origin"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginVertical="16dp"
-                android:ellipsize="end"
+                android:gravity="center"
                 android:maxLines="2"
                 android:text="Japanese"
                 android:textColor="@android:color/black"
                 android:textSize="18sp"
-                app:layout_constraintStart_toStartOf="@id/meal_name"
-                app:layout_constraintTop_toBottomOf="@id/meal_name" />
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/meal_iv" />
 
-            <TextView
+            <com.google.android.material.chip.Chip
                 android:id="@+id/meal_tags"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginVertical="16dp"
-                android:text="Meat,Casserole"
-                android:textColor="@color/black"
+                android:backgroundTint="@color/Light_grayish_red"
+                android:gravity="center"
+                android:text=""
+                android:textColor="@color/orange"
                 android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@id/meal_origin"
                 app:layout_constraintTop_toBottomOf="@id/meal_origin" />
 
-            <TextView
-                android:id="@+id/meal_recipe"
+            <androidx.cardview.widget.CardView
+                android:layout_marginVertical="16dp"
+                android:id="@+id/card_view_meal_recipe"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="16dp"
+                app:cardUseCompatPadding="true"
+                app:layout_constraintBottom_toTopOf="@id/card_view_ingredient"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/meal_tags">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+
+                    <TextView
+                        android:id="@+id/instructions"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:gravity="center_horizontal"
+                        android:text="@string/instructions"
+                        android:textColor="@color/orange"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/meal_recipe"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="16dp"
+                        android:padding="16dp"
+                        android:text="@string/meal_recipe"
+                        android:textSize="16sp" />
+
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_marginHorizontal="16dp"
+                android:id="@+id/card_view_ingredient"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:padding="16dp"
-                android:textSize="16sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/meal_tags"
-                tools:text="@string/meal_recipe" />
+                android:layout_marginVertical="16dp"
+                 android:padding="72dp"
+                android:elevation="8dp"
+                app:cardCornerRadius="16dp"
+                app:layout_constraintEnd_toEndOf="@id/card_view_meal_recipe"
+                app:layout_constraintStart_toStartOf="@id/card_view_meal_recipe"
+                app:layout_constraintTop_toBottomOf="@id/card_view_meal_recipe">
 
-            <TextView
-                android:id="@+id/ingredients_info"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="16dp"
-                android:text="Main Ingredients"
-                android:textSize="20sp"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/meal_recipe" />
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="16dp">
 
-
-            <TextView
-                android:id="@+id/ingredient_1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="16dp"
-                android:textSize="16sp"
-                app:layout_constraintEnd_toStartOf="@id/capacity_1"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/ingredients_info"
-                tools:text="bla bla 1" />
-
-            <TextView
-                android:id="@+id/capacity_1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="16dp"
-                android:textSize="16sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@id/ingredient_1"
-                app:layout_constraintTop_toBottomOf="@id/ingredients_info"
-                tools:text="ca ca 1" />
+                    <TextView
+                        android:id="@+id/ingredients_info"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Main Ingredients"
+                        android:textColor="@color/orange"
+                        android:textSize="20sp"
+                        android:textStyle="bold"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
 
 
-            <TextView
-                android:id="@+id/ingredient_2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="16dp"
-                android:textSize="16sp"
-                app:layout_constraintEnd_toStartOf="@id/capacity_1"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/ingredient_1"
-                tools:text="bla bla 2" />
+                    <TextView
+                        android:id="@+id/ingredient_1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="16dp"
+                        android:textSize="16sp"
+                        app:layout_constraintEnd_toStartOf="@id/capacity_1"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/ingredients_info"
+                        tools:text="bla bla 1" />
 
-            <TextView
-                android:id="@+id/capacity_2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="16dp"
-                android:textSize="16sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@id/ingredient_1"
-                app:layout_constraintTop_toBottomOf="@id/capacity_1"
-                tools:text="ca ca 2" />
+                    <TextView
+                        android:id="@+id/capacity_1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="16dp"
+                        android:textSize="16sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@id/ingredient_1"
+                        app:layout_constraintTop_toBottomOf="@id/ingredients_info"
+                        tools:text="ca ca 1" />
 
-            <TextView
-                android:id="@+id/ingredient_3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="16dp"
-                android:textSize="16sp"
-                app:layout_constraintEnd_toStartOf="@id/capacity_1"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/ingredient_2"
-                tools:text="bla bla 3" />
 
-            <TextView
-                android:id="@+id/capacity_3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="16dp"
-                android:textSize="16sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@id/ingredient_1"
-                app:layout_constraintTop_toBottomOf="@id/capacity_2"
-                tools:text="ca ca 3" />
+                    <TextView
+                        android:id="@+id/ingredient_2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="16dp"
+                        android:textSize="16sp"
+                        app:layout_constraintEnd_toStartOf="@id/capacity_1"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/ingredient_1"
+                        tools:text="bla bla 2" />
 
-            <TextView
-                android:id="@+id/ingredient_4"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="16dp"
-                android:textSize="16sp"
-                app:layout_constraintEnd_toStartOf="@id/capacity_1"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/ingredient_3"
-                tools:text="bla bla 4" />
+                    <TextView
+                        android:id="@+id/capacity_2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="16dp"
+                        android:textSize="16sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@id/ingredient_1"
+                        app:layout_constraintTop_toBottomOf="@id/capacity_1"
+                        tools:text="ca ca 2" />
 
-            <TextView
-                android:id="@+id/capacity_4"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="16dp"
-                android:textSize="16sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@id/ingredient_1"
-                app:layout_constraintTop_toBottomOf="@id/capacity_3"
-                tools:text="ca ca 4" />
+                    <TextView
+                        android:id="@+id/ingredient_3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="16dp"
+                        android:textSize="16sp"
+                        app:layout_constraintEnd_toStartOf="@id/capacity_1"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/ingredient_2"
+                        tools:text="bla bla 3" />
 
-            <TextView
-                android:id="@+id/ingredient_5"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="16dp"
-                android:textSize="16sp"
-                app:layout_constraintEnd_toStartOf="@id/capacity_1"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/ingredient_4"
-                tools:text="bla bla 5" />
+                    <TextView
+                        android:id="@+id/capacity_3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="16dp"
+                        android:textSize="16sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@id/ingredient_1"
+                        app:layout_constraintTop_toBottomOf="@id/capacity_2"
+                        tools:text="ca ca 3" />
 
-            <TextView
-                android:id="@+id/capacity_5"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="16dp"
-                android:textSize="16sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@id/ingredient_1"
-                app:layout_constraintTop_toBottomOf="@id/capacity_4"
-                tools:text="ca ca 5" />
+                    <TextView
+                        android:id="@+id/ingredient_4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="16dp"
+                        android:textSize="16sp"
+                        app:layout_constraintEnd_toStartOf="@id/capacity_1"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/ingredient_3"
+                        tools:text="bla bla 4" />
+
+                    <TextView
+                        android:id="@+id/capacity_4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="16dp"
+                        android:textSize="16sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@id/ingredient_1"
+                        app:layout_constraintTop_toBottomOf="@id/capacity_3"
+                        tools:text="ca ca 4" />
+
+                    <TextView
+                        android:id="@+id/ingredient_5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="16dp"
+                        android:textSize="16sp"
+                        app:layout_constraintEnd_toStartOf="@id/capacity_1"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/ingredient_4"
+                        tools:text="bla bla 5" />
+
+                    <TextView
+                        android:id="@+id/capacity_5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="16dp"
+                        android:textSize="16sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@id/ingredient_1"
+                        app:layout_constraintTop_toBottomOf="@id/capacity_4"
+                        tools:text="ca ca 5" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.cardview.widget.CardView>
+
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>
