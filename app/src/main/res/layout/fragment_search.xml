@@ -8,6 +8,7 @@
     tools:context=".ui.main.search.SearchFragment">
 
     <androidx.appcompat.widget.SearchView
+        android:fontFamily="@font/lato_bold"
         android:id="@+id/search_tv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

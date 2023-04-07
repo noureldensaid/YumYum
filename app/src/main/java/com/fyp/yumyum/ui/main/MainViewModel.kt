@@ -51,7 +51,7 @@ class MainViewModel @Inject constructor(
                 Log.e("Great request", "getData: Great")
             } else Log.e("Failed request", "getData: Failed")
         } catch (ex: Exception) {
-            Log.e("TAG", ex.message.toString());
+            Log.e("TAG", ex.message.toString())
         }
     }
 
@@ -61,9 +61,9 @@ class MainViewModel @Inject constructor(
             if (response.isSuccessful) {
                 _mealData.postValue(response.body()?.meals)
                 Log.e("Great request", "getData: Great")
-            } else Log.e("Failed request", "getData: Failed")
+            } else Log.e("Failed request", response.errorBody().toString())
         } catch (ex: Exception) {
-            Log.e("TAG", ex.message.toString());
+            Log.e("TAG", ex.message.toString())
         }
 
 

@@ -33,9 +33,10 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="100dp"
                 android:layout_marginBottom="24dp"
+                android:fontFamily="@font/lato_bold"
                 android:gravity="bottom|center"
                 android:text="Meat"
-                 android:textColor="#333"
+                android:textColor="#333"
                 android:textSize="22sp" />
 
 

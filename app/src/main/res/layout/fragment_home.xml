@@ -11,6 +11,7 @@
         android:layout_height="wrap_content">
 
         <TextView
+            android:fontFamily="@font/lato_bold"
             android:id="@+id/user_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -20,17 +21,17 @@
             android:text="Hello Nour,"
             android:textColor="@color/orange"
             android:textSize="24sp"
-            android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="parent"
+             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
+            android:fontFamily="@font/lato_regular"
             android:id="@+id/welcome_msg"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:padding="4dp"
-            android:text="What do you want to cook today?"
+            android:text="@string/what_do_you_want_to_cook_today"
             android:textColor="@color/black"
             android:textSize="18sp"
             app:layout_constraintStart_toStartOf="@id/user_name"
