@@ -16,6 +16,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:spanCount="2"
+        android:paddingBottom="48dp"
         tools:itemCount="2"
         tools:listitem="@layout/meals_rv_items" />
 
