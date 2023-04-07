@@ -4,6 +4,7 @@ import android.content.Context
 import androidx.room.Room
 import com.fyp.yumyum.data.local.MealsDatabase
 import com.fyp.yumyum.data.remote.MealsApi
+import com.fyp.yumyum.data.repositorey.Repository
 import com.fyp.yumyum.utils.Constants
 import com.fyp.yumyum.utils.Constants.Companion.DATABASE_NAME
 import dagger.Module
@@ -21,14 +22,13 @@ import javax.inject.Singleton
 @InstallIn(SingletonComponent::class)
 object AppModule {
 
-     @Provides
+    @Provides
     @Singleton
-    fun provideHttpClient(): OkHttpClient {
-        return OkHttpClient.Builder()
-            .readTimeout(20, TimeUnit.SECONDS)
-            .connectTimeout(20, TimeUnit.SECONDS)
-            .build()
-    }
+    fun provideHttpClient(): OkHttpClient = OkHttpClient.Builder()
+        .readTimeout(20, TimeUnit.SECONDS)
+        .connectTimeout(20, TimeUnit.SECONDS)
+        .build()
+
 
     @Provides
     @Singleton
@@ -45,7 +45,6 @@ object AppModule {
         retrofit.create(MealsApi::class.java)
 
 
-
     @Provides
     @Singleton
     fun provideDatabase(@ApplicationContext context: Context): MealsDatabase =
@@ -54,4 +53,17 @@ object AppModule {
             MealsDatabase::class.java,
             DATABASE_NAME
         ).build()
-    }
+
+    @Singleton
+    @Provides
+    fun provideDataStoreRepository(
+        @ApplicationContext app: Context
+    ): Repository =
+        Repository(
+            app,
+            provideMealsApi(provideRetrofit(provideHttpClient())),
+            provideDatabase(app)
+        )
+
+
+}

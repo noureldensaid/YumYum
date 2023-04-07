@@ -15,7 +15,6 @@
         android:layout_marginTop="16dp"
         android:orientation="vertical">
 
-
         <androidx.cardview.widget.CardView
             android:id="@+id/cardView_account_details"
             android:layout_width="match_parent"
@@ -23,54 +22,50 @@
             android:layout_marginLeft="10dp"
             android:layout_marginTop="70dp"
             android:layout_marginRight="10dp"
+            android:background="@color/ghost_white"
             app:cardCornerRadius="18dp"
             app:cardElevation="5dp"
             app:cardUseCompatPadding="true">
 
 
             <LinearLayout
+                android:id="@+id/linear_account_input_details"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/ghost_white"
-                android:orientation="vertical">
+                android:layout_marginTop="50dp"
+                android:orientation="vertical"
+                android:padding="24dp">
 
 
-                <LinearLayout
-                    android:id="@+id/linear_account_input_details"
+                <TextView
+                    android:id="@+id/user_name"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="50dp"
-                    android:orientation="vertical"
-                    android:padding="24dp">
-
-                    <TextView
-                        android:id="@+id/user_name"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="20dp"
-                        android:layout_marginBottom="24dp"
-                        android:gravity="center"
-                        android:text="Nour"
-                        android:textColor="#333"
-                        android:textSize="30sp" />
+                    android:layout_marginBottom="24dp"
+                    android:gravity="center"
+                    android:text="Nour"
+                    android:textColor="#333"
+                    android:textSize="30sp" />
 
 
-                    <TextView
-                        android:id="@+id/user_gmail"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:drawablePadding="8dp"
-                        android:maxLines="1"
-                        android:text="Nour eldin said"
-                        android:textColor="#333"
-                        android:textSize="18sp"
-                        app:drawableStartCompat="@drawable/ic_email" />
+                <TextView
 
-
-                </LinearLayout>
+                    android:id="@+id/user_gmail"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="16dp"
+                    android:drawablePadding="8dp"
+                    android:drawableTint="@color/orange"
+                    android:gravity="center_horizontal"
+                    android:maxLines="1"
+                    android:text="Nour eldin said"
+                    android:textColor="@color/orange"
+                    android:textSize="18sp"
+                    app:drawableStartCompat="@drawable/ic_email" />
 
 
             </LinearLayout>
+
 
         </androidx.cardview.widget.CardView>
 
@@ -80,13 +75,11 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginHorizontal="64dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="48dp"
             android:padding="16dp"
             android:text="Logout"
-            android:textColor="@color/orange"
             android:textSize="16sp"
             android:textStyle="bold"
-            app:backgroundTint="@color/ghost_white"
             app:cornerRadius="24dp" />
 
     </LinearLayout>
@@ -101,7 +94,7 @@
             android:layout_height="150dp"
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
-            android:src="@mipmap/ic_launcher_round"
+            android:src="@drawable/ic_user_avatar"
             app:civ_border_color="@color/ghost_white"
             app:civ_border_width="2dp" />
 

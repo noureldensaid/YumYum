@@ -11,6 +11,7 @@ import com.fyp.yumyum.models.Meal
 import com.fyp.yumyum.models.MealDetails
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
 import javax.inject.Inject
 
 @HiltViewModel
@@ -40,9 +41,6 @@ class MainViewModel @Inject constructor(
     val mealData: LiveData<List<Meal>> = _mealData
 
     val mealId: MutableLiveData<String> = MutableLiveData()
-
-
-
 
 
     private fun getCategories() = viewModelScope.launch {
@@ -99,6 +97,18 @@ class MainViewModel @Inject constructor(
     fun clearSearchResults() {
         _searchData.value = emptyList()
     }
+
+
+    fun saveUserName(value: String) {
+        viewModelScope.launch {
+            repository.saveUserName("userName", value)
+        }
+    }
+
+    fun getUserName(): String? = runBlocking {
+        repository.getUserName("userName")
+    }
+
 
     override fun onCleared() {
         super.onCleared()

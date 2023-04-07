@@ -1,8 +1,11 @@
 package com.fyp.yumyum.ui.main
 
+import android.graphics.Color
+import android.os.Build
 import android.os.Bundle
 import android.view.View
-import androidx.activity.viewModels
+import android.view.Window
+import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
@@ -11,6 +14,7 @@ import androidx.navigation.ui.setupWithNavController
 import com.fyp.yumyum.R
 import com.fyp.yumyum.databinding.ActivityMainBinding
 import dagger.hilt.android.AndroidEntryPoint
+
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
@@ -21,6 +25,7 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         setUpNavigation()
+        updateStatusBarColor("#F5F5F8")
     }
 
 
@@ -47,6 +52,11 @@ class MainActivity : AppCompatActivity() {
         return navController.navigateUp()
     }
 
+    private fun updateStatusBarColor(color: String) {
+        val window: Window = window
+        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
+        window.statusBarColor = Color.parseColor(color)
+    }
 
 
 }
