@@ -6,10 +6,7 @@ import com.fyp.yumyum.utils.Constants.Companion.TABLE_NAME
 
 @Entity(tableName = TABLE_NAME)
 data class Meal(
-    //room id
-    @PrimaryKey(autoGenerate = true)
-    val id: Int = 0,
-    // meal id from api
+    @PrimaryKey(autoGenerate = false)
     val idMeal: String,
     val strMeal: String,
     val strMealThumb: String,

@@ -8,6 +8,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Button
 import androidx.activity.viewModels
+import androidx.compose.ui.text.capitalize
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
@@ -40,7 +41,7 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
     private fun showUserInfo() {
         auth = Firebase.auth
         binding.userGmail.text = auth.currentUser?.email
-        binding.userName.text = viewModel.getUserName()
+        binding.userName.text = viewModel.getUserName()?.capitalize()
     }
 
     private fun logout() {

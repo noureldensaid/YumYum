@@ -2,10 +2,8 @@ package com.fyp.yumyum.ui.main
 
 import android.os.Bundle
 import android.view.View
-import androidx.activity.viewModels
 import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
@@ -38,6 +36,8 @@ class SearchFragment : Fragment(R.layout.fragment_search) {
                 }
             } else {
                 binding.noResultsIv.visibility = View.VISIBLE
+                binding.searchPlaceholder.visibility = View.GONE
+
             }
         })
         searchAdapter = MealAdapter(viewModel)
@@ -52,11 +52,10 @@ class SearchFragment : Fragment(R.layout.fragment_search) {
                     viewModel.search(query)
                     binding.searchRv.scrollToPosition(0)
                     binding.searchTv.clearFocus()
-                    binding.searchTv.setQuery("", false)
-                    return true
                 }
                 return true
             }
+
             override fun onQueryTextChange(newText: String?): Boolean {
                 return false
             }
@@ -74,6 +73,7 @@ class SearchFragment : Fragment(R.layout.fragment_search) {
     override fun onDestroy() {
         super.onDestroy()
         viewModel.clearSearchResults()
+        binding.searchTv.setQuery("", false)
         binding.searchRv.visibility = View.GONE
         binding.searchPlaceholder.visibility = View.VISIBLE
         _binding = null
