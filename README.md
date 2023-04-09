@@ -8,9 +8,9 @@ Android using Kotlin
 
 ## Screenshots
  
-<img src="https://user-images.githubusercontent.com/93207605/230755932-31e7ba29-1c00-426c-a14f-5adcacb3371a.jpg" hieght="350" width="300">
-<img src="https://user-images.githubusercontent.com/93207605/230755941-b4c049a0-6934-4f9d-954b-fcaf306d8964.jpg" hieght="350" width="300">
-<img src="https://user-images.githubusercontent.com/93207605/230755945-54bce3ff-582b-40ad-8966-5852eb5fdee9.jpg" hieght="350" width="300">
+<img src="https://user-images.githubusercontent.com/93207605/230755932-31e7ba29-1c00-426c-a14f-5adcacb3371a.jpg" hieght="150" width="100">
+<img src="https://user-images.githubusercontent.com/93207605/230755941-b4c049a0-6934-4f9d-954b-fcaf306d8964.jpg" hieght="150" width="100">
+<img src="https://user-images.githubusercontent.com/93207605/230755945-54bce3ff-582b-40ad-8966-5852eb5fdee9.jpg" hieght="150" width="100">
 
  
  
