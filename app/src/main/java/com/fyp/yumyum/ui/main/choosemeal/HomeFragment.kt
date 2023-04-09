@@ -27,6 +27,11 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         super.onViewCreated(view, savedInstanceState)
         _binding = FragmentHomeBinding.bind(view)
 
+        viewModel.isLoading.observe(viewLifecycleOwner, Observer { isLoading ->
+            if (isLoading) binding.loadingProgressbar.visibility = View.VISIBLE
+            else binding.loadingProgressbar.visibility = View.GONE
+        })
+
         homeAdapter = HomeAdapter()
 
         homeAdapter.onItemClickListener = {
@@ -41,11 +46,11 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
             adapter = homeAdapter
         }
 
-        viewModel.data.observe(viewLifecycleOwner, Observer { data ->
-            Log.e("size ", data.size.toString());
-            homeAdapter.differ.submitList(data)
-            binding.loadingProgressbar.visibility = View.GONE
+        viewModel.data.observe(viewLifecycleOwner, Observer { categoryList ->
+            Log.e("size ", categoryList.size.toString());
+            homeAdapter.differ.submitList(categoryList)
         })
+        viewModel.getCategories()
 
         setUpImageSlider()
 

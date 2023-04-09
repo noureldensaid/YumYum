@@ -55,7 +55,7 @@ class MealDetailsFragment : Fragment(R.layout.fragment_meal_details) {
                         .load(it.strMealThumb)
                         .error(R.drawable.ic_wifi_broken)
                         .transform(CenterCrop(), RoundedCorners(32))
-                        .placeholder(R.drawable.ic_default_placeholder)
+                        .placeholder(R.drawable.circular_progress_bar)
                         .into(mealIv)
                 }
             }

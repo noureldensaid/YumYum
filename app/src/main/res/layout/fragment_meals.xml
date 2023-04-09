@@ -6,12 +6,27 @@
     android:layout_height="match_parent"
     tools:context=".ui.main.choosemeal.MealsFragment">
 
+    <ProgressBar
+        android:id="@+id/loading_progressbar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="100dp"
+        android:layout_gravity="center_vertical"
+         android:indeterminateDrawable="@drawable/circular_progress_bar"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:visibility="visible" />
+
+
     <androidx.recyclerview.widget.RecyclerView
-        android:layout_marginEnd="4dp"
-        android:layout_marginStart="8dp"
         android:id="@+id/meals_rv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="4dp"
         android:orientation="vertical"
         android:paddingBottom="48dp"
         app:layoutManager="androidx.recyclerview.widget.StaggeredGridLayoutManager"
@@ -22,4 +37,4 @@
         tools:itemCount="2"
         tools:listitem="@layout/meals_rv_items" />
 
- </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

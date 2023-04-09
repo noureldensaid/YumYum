@@ -13,10 +13,6 @@ interface MealsDao {
     @Query("SELECT * FROM meals_table ")
     fun getFavMeals(): LiveData<List<Meal>>
 
-
-    @Update
-    suspend fun update(meal: Meal)
-
     @Delete
     suspend fun delete(meal: Meal)
 

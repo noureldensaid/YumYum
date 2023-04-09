@@ -60,9 +60,6 @@ class Repository @Inject constructor(
 
     suspend fun removeFav(meal: Meal) = mealsDatabase.mealsDao().delete(meal)
 
-    suspend fun update(meal: Meal) = mealsDatabase.mealsDao().update(meal)
-
-
-    fun getFav() = mealsDatabase.mealsDao().getFavMeals()
+     fun getFav() = mealsDatabase.mealsDao().getFavMeals()
 
 }

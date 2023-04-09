@@ -30,11 +30,19 @@ class MealsFragment : Fragment(R.layout.fragment_meals) {
         val categoryName = args.categoryName
         updateToolbar(categoryName)
 
-        viewModel.getMeals(categoryName)
+        viewModel.isLoading.observe(viewLifecycleOwner, Observer { isLoading ->
+            if (isLoading) binding.loadingProgressbar.visibility = View.VISIBLE
+            else binding.loadingProgressbar.visibility = View.GONE
+        })
+
         viewModel.mealData.observe(viewLifecycleOwner, Observer {
             mealAdapter.differ.submitList(it)
         })
+
+        viewModel.getMeals(categoryName)
+
         mealAdapter = MealAdapter(viewModel)
+
         binding.mealsRv.apply {
             layoutManager = StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
             adapter = mealAdapter
@@ -45,7 +53,6 @@ class MealsFragment : Fragment(R.layout.fragment_meals) {
             findNavController().navigate(R.id.action_mealsFragment_to_mealDetailsFragment, args)
         }
     }
-
 
     private fun updateToolbar(string: String) {
         val categoryName = args.categoryName

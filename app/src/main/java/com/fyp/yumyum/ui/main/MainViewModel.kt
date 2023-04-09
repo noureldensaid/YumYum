@@ -25,12 +25,8 @@ class MainViewModel @Inject constructor(
     private val repository: Repository
 ) : ViewModel() {
 
-    var allFavorites: LiveData<List<Meal>>
-
-    init {
-        getCategories()
-        allFavorites = repository.getFav()
-    }
+    private val _isLoading = MutableLiveData<Boolean>()
+    val isLoading: LiveData<Boolean> = _isLoading
 
     private val _searchData: MutableLiveData<List<Meal>> = MutableLiveData()
     val searchData: LiveData<List<Meal>> = _searchData
@@ -49,12 +45,14 @@ class MainViewModel @Inject constructor(
     val mealId: MutableLiveData<String> = MutableLiveData()
 
 
-    private fun getCategories() = viewModelScope.launch {
+    fun getCategories() = viewModelScope.launch {
+        _isLoading.value = true
         try {
             val response = repository.getCategories()
             if (response.isSuccessful) {
                 _data.postValue(response.body()?.categories)
                 Log.e("Great request", "getData: Great")
+                _isLoading.value = false
             } else Log.e("Failed request", "getData: Failed")
         } catch (ex: Exception) {
             Log.e("TAG", ex.message.toString())
@@ -62,11 +60,13 @@ class MainViewModel @Inject constructor(
     }
 
     fun getMeals(category: String) = viewModelScope.launch {
+        _isLoading.value=true
         try {
             val response = repository.getMeals(category)
             if (response.isSuccessful) {
                 _mealData.postValue(response.body()?.meals)
                 Log.e("Great request", "getData: Great")
+                _isLoading.value = false
             } else Log.e("Failed request", response.errorBody().toString())
         } catch (ex: Exception) {
             Log.e("TAG", ex.message.toString())
@@ -94,11 +94,7 @@ class MainViewModel @Inject constructor(
 
     fun removeFav(meal: Meal) = viewModelScope.launch { repository.removeFav(meal) }
 
-
-    fun update(meal: Meal) =
-        viewModelScope.launch {
-            repository.update(meal)
-        }
+    var allFavorites: LiveData<List<Meal>> = repository.getFav()
 
     fun clearSearchResults() {
         _searchData.value = emptyList()
