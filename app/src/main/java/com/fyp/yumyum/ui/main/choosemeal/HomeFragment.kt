@@ -44,9 +44,8 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         viewModel.data.observe(viewLifecycleOwner, Observer { data ->
             Log.e("size ", data.size.toString());
             homeAdapter.differ.submitList(data)
+            binding.loadingProgressbar.visibility = View.GONE
         })
-
-
 
         setUpImageSlider()
 

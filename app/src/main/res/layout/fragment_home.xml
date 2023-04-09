@@ -10,26 +10,39 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
+        <ProgressBar
+            android:id="@+id/loading_progressbar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:indeterminateDrawable="@drawable/circular_progress_bar"
+            app:layout_constraintBottom_toBottomOf="@+id/home_rv"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+
+
         <TextView
-            android:fontFamily="@font/lato_bold"
             android:id="@+id/user_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
             android:layout_marginStart="16dp"
+            android:fontFamily="@font/lato_bold"
             android:padding="4dp"
             android:text="Hello Nour,"
             android:textColor="@color/orange"
             android:textSize="24sp"
-             app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:fontFamily="@font/lato_regular"
             android:id="@+id/welcome_msg"
-            android:padding="4dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/lato_regular"
+            android:padding="4dp"
             android:text="@string/what_do_you_want_to_cook_today"
             android:textColor="@color/black"
             android:textSize="17sp"
@@ -65,7 +78,7 @@
                 android:id="@+id/imageSlider"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                 app:iss_auto_cycle="true"
+                app:iss_auto_cycle="true"
                 app:iss_corner_radius="16"
                 app:iss_delay="0"
                 app:iss_error_image="@android:color/darker_gray"
@@ -90,7 +103,6 @@
             app:spanCount="2"
             tools:itemCount="2"
             tools:listitem="@layout/home_rv_items" />
-
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
