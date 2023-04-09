@@ -17,9 +17,9 @@ import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class SearchFragment : Fragment(R.layout.fragment_search) {
-    private val viewModel: MainViewModel by viewModels<MainViewModel>()
     private var _binding: FragmentSearchBinding? = null
     private val binding get() = _binding!!
+    private val viewModel: MainViewModel by viewModels<MainViewModel>()
     private lateinit var searchAdapter: MealAdapter
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -38,13 +38,13 @@ class SearchFragment : Fragment(R.layout.fragment_search) {
             } else {
                 binding.noResultsIv.visibility = View.VISIBLE
                 binding.searchPlaceholder.visibility = View.GONE
+                binding.searchRv.visibility = View.GONE
 
             }
         })
         searchAdapter = MealAdapter(viewModel)
         binding.searchRv.apply {
-            setHasFixedSize(true)
-            layoutManager = StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
+             layoutManager = StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
             adapter = searchAdapter
         }
         binding.searchTv.setOnQueryTextListener(object : SearchView.OnQueryTextListener {

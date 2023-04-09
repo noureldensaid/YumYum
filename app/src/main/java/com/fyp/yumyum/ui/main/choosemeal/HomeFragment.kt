@@ -26,24 +26,31 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         _binding = FragmentHomeBinding.bind(view)
-        viewModel.data.observe(viewLifecycleOwner, Observer { data ->
-            Log.e("size ", data.size.toString());
-            homeAdapter.differ.submitList(data)
-        })
-        setUpImageSlider()
-        updateWelcomeMsg()
+
         homeAdapter = HomeAdapter()
-        binding.homeRv.apply {
-            setHasFixedSize(true)
-            layoutManager = StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
-            adapter = homeAdapter
-        }
+
         homeAdapter.onItemClickListener = {
             val args = Bundle()
             args.putString("categoryName", it.strCategory)
             findNavController().navigate(R.id.action_homeFragment_to_mealsFragment, args)
 
         }
+
+        binding.homeRv.apply {
+            layoutManager = StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
+            adapter = homeAdapter
+        }
+
+        viewModel.data.observe(viewLifecycleOwner, Observer { data ->
+            Log.e("size ", data.size.toString());
+            homeAdapter.differ.submitList(data)
+        })
+
+
+
+        setUpImageSlider()
+
+        updateWelcomeMsg()
     }
 
     private fun updateWelcomeMsg() {

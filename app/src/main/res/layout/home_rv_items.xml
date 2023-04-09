@@ -2,17 +2,16 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="200dp"
+    android:layout_width="175dp"
     android:layout_height="wrap_content"
-    android:layout_margin="8dp"
-    tools:context=".ui.main.profile.ProfileFragment">
+    android:paddingEnd="4dp"
+     tools:context=".ui.main.profile.ProfileFragment">
 
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="16dp"
-        android:orientation="vertical"
+         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -20,24 +19,25 @@
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="50dp"
+            android:layout_marginTop="75dp"
             android:background="@color/ghost_white"
             app:cardCornerRadius="18dp"
-            app:cardElevation="5dp"
+            app:cardElevation="4dp"
             app:cardUseCompatPadding="true">
 
 
             <TextView
+
                 android:id="@+id/category_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="100dp"
-                android:layout_marginBottom="24dp"
+                android:layout_marginTop="56dp"
                 android:fontFamily="@font/lato_bold"
                 android:gravity="bottom|center"
+                android:padding="16dp"
                 android:text="Meat"
                 android:textColor="#333"
-                android:textSize="22sp" />
+                android:textSize="20sp" />
 
 
         </androidx.cardview.widget.CardView>
@@ -56,7 +56,7 @@
             android:layout_height="150dp"
             app:civ_border_color="@color/Light_grayish_red"
             app:civ_border_width="8dp"
-            tools:src="@drawable/ic_yummy" />
+            tools:src="@drawable/ic_logo" />
 
     </RelativeLayout>
 

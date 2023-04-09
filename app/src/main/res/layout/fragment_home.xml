@@ -27,13 +27,12 @@
         <TextView
             android:fontFamily="@font/lato_regular"
             android:id="@+id/welcome_msg"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
             android:padding="4dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:text="@string/what_do_you_want_to_cook_today"
             android:textColor="@color/black"
-            android:textSize="18sp"
+            android:textSize="17sp"
             app:layout_constraintStart_toStartOf="@id/user_name"
             app:layout_constraintTop_toBottomOf="@id/user_name" />
 
@@ -41,7 +40,6 @@
             android:id="@+id/welcome_avatar"
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:layout_marginEnd="8dp"
             android:padding="8dp"
             android:src="@drawable/ic_user_avatar"
             app:civ_border_color="@color/Light_grayish_red"
@@ -80,7 +78,7 @@
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/home_rv"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:orientation="vertical"

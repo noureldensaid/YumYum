@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.View
 import android.view.Window
 import android.view.WindowManager
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
@@ -18,15 +19,16 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
+    private val viewModel: MainViewModel by viewModels<MainViewModel>()
     private lateinit var mainNavController: NavController
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         setUpNavigation()
-
-    }
-
+        updateStatusBarColor("#F5F5F8")
+        isInternetConnected()
+     }
 
     private fun setUpNavigation() {
         mainNavController =
@@ -70,7 +72,6 @@ class MainActivity : AppCompatActivity() {
         setSupportActionBar(binding.toolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(true);
         supportActionBar?.setDisplayShowHomeEnabled(true);
-        updateStatusBarColor("#F5F5F8")
     }
 
     override fun onSupportNavigateUp(): Boolean {
@@ -84,4 +85,15 @@ class MainActivity : AppCompatActivity() {
         window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
         window.statusBarColor = Color.parseColor(color)
     }
+
+    private fun isInternetConnected() {
+        if (!viewModel.isInternetConnected())
+            binding.apply {
+                noConnection.visibility = View.VISIBLE
+                toolbar.visibility = View.GONE
+                mainFragmentContainer.visibility = View.GONE
+                bottomNavigationView.visibility = View.GONE
+            }
+    }
+
 }

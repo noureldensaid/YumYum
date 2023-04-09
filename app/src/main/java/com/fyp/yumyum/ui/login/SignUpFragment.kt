@@ -41,7 +41,7 @@ class SignUpFragment : Fragment(R.layout.fragment_sign_up) {
                         .addOnCompleteListener { task ->
                             if (task.isSuccessful) {
                                 binding.apply {
-                                    signUpBtn.visibility = View.GONE
+                                    signUpBtn.visibility = View.INVISIBLE
                                     loadingProgressbar.visibility = View.VISIBLE
                                 }
                                 startActivity(Intent(activity, MainActivity::class.java))

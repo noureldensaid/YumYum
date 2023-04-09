@@ -2,7 +2,6 @@ package com.fyp.yumyum.ui.main.choosemeal
 
 import android.os.Bundle
 import android.view.View
-import android.widget.Toolbar
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
@@ -37,7 +36,6 @@ class MealsFragment : Fragment(R.layout.fragment_meals) {
         })
         mealAdapter = MealAdapter(viewModel)
         binding.mealsRv.apply {
-            setHasFixedSize(true)
             layoutManager = StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
             adapter = mealAdapter
         }
@@ -49,7 +47,7 @@ class MealsFragment : Fragment(R.layout.fragment_meals) {
     }
 
 
-    private fun updateToolbar(string: String){
+    private fun updateToolbar(string: String) {
         val categoryName = args.categoryName
         activity?.findViewById<androidx.appcompat.widget.Toolbar>(R.id.toolbar)?.title = string
 
@@ -57,6 +55,6 @@ class MealsFragment : Fragment(R.layout.fragment_meals) {
 
     override fun onDestroy() {
         super.onDestroy()
-        _binding = null
+         _binding = null
     }
 }

@@ -12,10 +12,8 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
-import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import java.util.concurrent.TimeUnit
 import javax.inject.Singleton
 
 @Module
@@ -24,17 +22,8 @@ object AppModule {
 
     @Provides
     @Singleton
-    fun provideHttpClient(): OkHttpClient = OkHttpClient.Builder()
-        .readTimeout(20, TimeUnit.SECONDS)
-        .connectTimeout(20, TimeUnit.SECONDS)
-        .build()
-
-
-    @Provides
-    @Singleton
-    fun provideRetrofit(okHttpClient: OkHttpClient): Retrofit =
+    fun provideRetrofit(): Retrofit =
         Retrofit.Builder()
-            .client(okHttpClient)
             .baseUrl(Constants.BASE_URL)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
@@ -57,13 +46,10 @@ object AppModule {
     @Singleton
     @Provides
     fun provideDataStoreRepository(
-        @ApplicationContext app: Context
-    ): Repository =
-        Repository(
-            app,
-            provideMealsApi(provideRetrofit(provideHttpClient())),
-            provideDatabase(app)
-        )
+        @ApplicationContext app: Context, mealsApi: MealsApi, mealsDatabase: MealsDatabase
+    ): Repository = Repository(
+        app, mealsApi, mealsDatabase
+    )
 
 
 }

@@ -16,6 +16,7 @@
         android:layout_marginTop="16dp"
         android:fontFamily="@font/lato_bold"
         android:hint="Email"
+
         app:boxBackgroundColor="@color/Light_grayish_red"
         app:boxCornerRadiusBottomEnd="8dp"
         app:boxCornerRadiusBottomStart="8dp"
@@ -75,9 +76,9 @@
         android:layout_marginHorizontal="48dp"
         android:layout_marginTop="64dp"
         android:backgroundTint="@color/orange"
+        android:fontFamily="@font/lato_bold"
         android:padding="16dp"
         android:text="Login"
-        android:fontFamily="@font/lato_bold"
         android:textAllCaps="false"
         android:textColor="@color/ghost_white"
         android:textSize="20sp"
@@ -85,11 +86,13 @@
 
     <ProgressBar
         android:id="@+id/loading_progressbar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
         android:layout_gravity="center"
-        android:layout_marginVertical="24dp"
-        android:visibility="gone"
+         android:layout_marginVertical="24dp"
+        android:drawingCacheQuality="high"
+        android:indeterminateDrawable="@drawable/ic_loading_anim"
+         android:visibility="gone"
         tools:visibility="visible" />
 
 

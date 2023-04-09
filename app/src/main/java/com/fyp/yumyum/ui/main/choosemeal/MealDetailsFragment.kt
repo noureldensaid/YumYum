@@ -1,6 +1,9 @@
 package com.fyp.yumyum.ui.main.choosemeal
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -8,6 +11,7 @@ import androidx.lifecycle.Observer
 import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.CenterCrop
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.fyp.yumyum.R
 import com.fyp.yumyum.databinding.FragmentMealDetailsBinding
 import com.fyp.yumyum.ui.main.MainViewModel
@@ -25,8 +29,11 @@ class MealDetailsFragment : Fragment(R.layout.fragment_meal_details) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         _binding = FragmentMealDetailsBinding.bind(view)
+
         val mealId = args.mealId
+
         viewModel.getMealDetails(mealId)
+
         viewModel.mealDetails.observe(viewLifecycleOwner, Observer {
             binding.apply {
                 if (it != null) {
@@ -44,13 +51,21 @@ class MealDetailsFragment : Fragment(R.layout.fragment_meal_details) {
                     ingredient3.text = it.strIngredient3
                     ingredient4.text = it.strIngredient4
                     ingredient5.text = it.strIngredient5
-                    Glide.with(view).load(it.strMealThumb)
-                        .error(R.drawable.ic_wifi_broken).transform(CenterCrop())
-                        .placeholder(R.drawable.ic_loading_anim).transform(CenterCrop())
+                    Glide.with(view)
+                        .load(it.strMealThumb)
+                        .error(R.drawable.ic_wifi_broken)
+                        .transform(CenterCrop(), RoundedCorners(32))
+                        .placeholder(R.drawable.ic_loading_anim)
                         .into(mealIv)
                 }
             }
         })
+
+        binding.fab.setOnClickListener {
+            val mealUrl = viewModel.mealDetails.value?.strYoutube.toString()
+            Log.e("mealURL", mealUrl.toString())
+            startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(mealUrl)))
+        }
 
 
     }
@@ -58,7 +73,6 @@ class MealDetailsFragment : Fragment(R.layout.fragment_meal_details) {
     private fun updateToolbar(string: String?) {
         activity?.findViewById<androidx.appcompat.widget.Toolbar>(R.id.toolbar)?.title = string
     }
-
 
     override fun onDestroy() {
         super.onDestroy()

@@ -35,7 +35,7 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
                         .addOnCompleteListener { task ->
                             if (task.isSuccessful) {
                                 binding.apply {
-                                    loginBtn.visibility = View.GONE
+                                    loginBtn.visibility = View.INVISIBLE
                                     loadingProgressbar.visibility = View.VISIBLE
                                 }
                                 startActivity(Intent(activity, MainActivity::class.java))

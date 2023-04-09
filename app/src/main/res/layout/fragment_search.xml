@@ -8,14 +8,14 @@
     tools:context=".ui.main.search.SearchFragment">
 
     <androidx.appcompat.widget.SearchView
-        android:fontFamily="@font/lato_bold"
         android:id="@+id/search_tv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="24dp"
         android:layout_marginVertical="16dp"
-        android:background="@drawable/round_corner"
+        android:background="@drawable/search_rounded_corners"
         android:focusable="false"
+        android:fontFamily="@font/lato_bold"
         android:inputType="text"
         android:maxLines="1"
         android:paddingHorizontal="8dp"
@@ -38,8 +38,8 @@
         android:id="@+id/search_placeholder"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:padding="24dp"
         android:elevation="8dp"
+        android:padding="24dp"
         android:src="@drawable/search_placeholder"
         android:visibility="visible" />
 

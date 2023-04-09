@@ -1,5 +1,10 @@
 package com.fyp.yumyum.ui.main
 
+import android.app.Application
+import android.content.Context
+import android.net.ConnectivityManager
+import android.net.NetworkCapabilities
+import android.os.Build
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -16,6 +21,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class MainViewModel @Inject constructor(
+    private val app: Application,
     private val repository: Repository
 ) : ViewModel() {
 
@@ -107,6 +113,24 @@ class MainViewModel @Inject constructor(
 
     fun getUserName(): String? = runBlocking {
         repository.getUserName("userName")
+    }
+
+
+    fun isInternetConnected(): Boolean {
+        val connectivityManager =
+            app.applicationContext.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            val network = connectivityManager.activeNetwork ?: return false
+            val networkCapabilities =
+                connectivityManager.getNetworkCapabilities(network) ?: return false
+
+            return networkCapabilities.hasCapability(NetworkCapabilities.NET_CAPABILITY_INTERNET)
+        } else {
+            val networkInfo = connectivityManager.activeNetworkInfo ?: return false
+
+            return networkInfo.isConnected
+        }
     }
 
 
