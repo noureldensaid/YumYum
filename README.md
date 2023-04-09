@@ -6,7 +6,8 @@ YumYum is a Native Android Application developed using Kotlin to help you discov
 ( Mvvm & LiveData - View Binding - Navigation Component - Kotlin coroutines - Retrofit2 - Dagger Hilt - Room Database - Preferences DataStore - Firebase Authentication - Glide )
 
  
-### Api : https://www.themealdb.com/api.php
+### Used Api:
+https://www.themealdb.com/api.php
 
 
 ## Screenshots
