@@ -43,7 +43,7 @@
                 android:gravity="center"
                 android:maxLines="2"
                 android:text="Japanese"
-                android:textColor="@android:color/black"
+                android:textColor="#333"
                 android:textSize="18sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/meal_iv" />
@@ -56,6 +56,7 @@
                 android:backgroundTint="@color/white"
                 android:gravity="center"
                 android:text=""
+                android:fontFamily="@font/lato_bold"
                 android:textColor="@color/orange"
                 android:textSize="16sp"
                 app:layout_constraintEnd_toEndOf="parent"
