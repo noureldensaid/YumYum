@@ -8,13 +8,11 @@ Android using Kotlin
 
 ## Screenshots
  
- <img src="https://user-images.githubusercontent.com/93207605/230755932-31e7ba29-1c00-426c-a14f-5adcacb3371a.jpg" hieght="350" width="300">
-<img src="https://user-images.githubusercontent.com/93207605/218975953-0288c659-2fea-4704-b525-b9452137a963.png" hieght="350" width="300">
-<img src="https://user-images.githubusercontent.com/93207605/218975983-653f5ee7-fe51-400e-8e53-4487eb916db6.png" hieght="350" width="300">
+<img src="https://user-images.githubusercontent.com/93207605/230755932-31e7ba29-1c00-426c-a14f-5adcacb3371a.jpg" hieght="350" width="300">
+<img src="https://user-images.githubusercontent.com/93207605/230755941-b4c049a0-6934-4f9d-954b-fcaf306d8964.jpg" hieght="350" width="300">
+<img src="https://user-images.githubusercontent.com/93207605/230755945-54bce3ff-582b-40ad-8966-5852eb5fdee9.jpg" hieght="350" width="300">
 
  
  
 
-<img src= "https://user-images.githubusercontent.com/93207605/230755932-31e7ba29-1c00-426c-a14f-5adcacb3371a.jpg"hieght="350" width="300">
-<img src="https://user-images.githubusercontent.com/93207605/230755941-b4c049a0-6934-4f9d-954b-fcaf306d8964.jpg)"hieght="350" width="300">
-<img src="https://user-images.githubusercontent.com/93207605/230755945-54bce3ff-582b-40ad-8966-5852eb5fdee9.jpg)"hieght="350" width="300">
+ 
