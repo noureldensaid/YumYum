@@ -3,8 +3,10 @@ Discover mind-blowing recipes from around the world !
 YumYum is a Native Android Application developed using Kotlin to help you discover new , tasty and mind-blowing recipes from around the world so you can try it at home by yourself 
 
 ## Technologies used:
-Android using Kotlin
 ( Mvvm & LiveData - View Binding - Navigation Component - Kotlin coroutines - Retrofit2 - Dagger Hilt - Room Database - Preferences DataStore - Firebase Authentication - Glide )
+#API
+Api : https://www.themealdb.com/api.php
+
 
 ## Screenshots
 
