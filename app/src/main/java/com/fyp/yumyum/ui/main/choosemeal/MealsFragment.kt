@@ -30,11 +30,6 @@ class MealsFragment : Fragment(R.layout.fragment_meals) {
         val categoryName = args.categoryName
         updateToolbar(categoryName)
 
-        viewModel.isLoading.observe(viewLifecycleOwner, Observer { isLoading ->
-            if (isLoading) binding.loadingProgressbar.visibility = View.VISIBLE
-            else binding.loadingProgressbar.visibility = View.GONE
-        })
-
         viewModel.mealData.observe(viewLifecycleOwner, Observer {
             mealAdapter.differ.submitList(it)
         })
