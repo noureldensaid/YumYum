@@ -1,7 +1,3 @@
-![homey](https://github.com/noureldensaid/YumYum/assets/93207605/f448a9dc-b26b-4c87-8e74-c8cd9942ce91)
-![sy](https://github.com/noureldensaid/YumYum/assets/93207605/ccb1a9b7-f1fd-4c10-b665-bbe99787bf4a)
-![homey](https://github.com/noureldensaid/YumYum/assets/93207605/d7543223-1364-4afd-b6c8-690190f59efe)
-![sy](https://github.com/noureldensaid/YumYum/assets/93207605/31342a60-1109-40a3-b797-89c337ff844a)
 # YumYum
 Discover mind-blowing recipes from around the world !
 YumYum is a Native Android Application developed using Kotlin to help you discover new , tasty and mind-blowing recipes from around the world so you can try it at home by yourself 
